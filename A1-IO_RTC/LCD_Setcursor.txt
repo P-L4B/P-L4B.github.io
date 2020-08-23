@@ -1,0 +1,44 @@
+;LCD SETCURSOR
+; 	Requires:
+; 	- Shift Register Data Out ASM Routine
+; 	code starts at $0700
+;	Requirements: PCB v0.94c, ATMEGA32 FW v0.94c
+;	VIA Base Address = $2000 (8192 DECIMAL)
+; 	HARDWARE CONNECTIONS:
+; 	- LCD'S REGISTER SELECT "RS" CONNECTED TO DIGITAL OUTPUT 1
+; 	- LCD'S DATA LINES "DB0" TO "DB8" CONNECTED TO DIGITAL OUTPUT 9 TO 16
+; 	- LCD'S ENABLE "E" CONNECTED TO CS2 LINE ON THE OUTPUT CONNECTOR. 
+;	- "CS2" LINE THROUGH-HOLE CONNECTED TO THROUGH-HOLE "B" (ADDR $B000=45056 --> 45056-65536=-20480 IN BASIC)
+; 	- LCD'S "R/W" TO GND, POWER AND CONTRAST BY THE BOOK
+
+define ENABLE $B000
+define ROW $0284	;row of display (row-->value: 1-->00, 2-->40, 3-->10, 4-->50)
+define COL $0285	;offset (column) from the beginning of row
+CLC
+LDA #$0		;set RS LOW (instruction mode)
+STA $0282	;store in LO-BYTE
+LDA ROW 	;read desired ROW
+ADC #$80	;add 128 in order to set MSB=1 as seen in docs
+ADC COL		;add with desired COL value
+STA $0283	;store in HI-BYTE
+JSR $0630
+JSR PAUSE
+LDA ENABLE
+RTS
+PAUSE:  LDX #$00
+        LDY #$00
+LP:     INX
+        CPX #$FF
+        BNE LP
+        LDX #$00
+        INY
+        BNE LP
+        RTS
+
+HEXDUMP:
+0700: 18 a9 00 8d 82 02 ad 84 02 69 80 6d 85 02 8d 83 
+0710: 02 20 30 06 20 1b 07 ad 00 b0 60 a2 00 a0 00 e8 
+0720: e0 ff d0 fb a2 00 c8 d0 f6 60 
+
+Note: to speed up LCD writings change value in location $071E (outer loop delay preset counter, default=00) to $F0 or $FF.
+

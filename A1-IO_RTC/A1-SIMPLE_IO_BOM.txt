@@ -1,0 +1,18 @@
+
+        +-------------------------------+
+        !    APPLE-1 SIMPLE I/O BOARD   !
+        +-------------------------------+
+
+
+BILL OF MATERIALS:
+
+- 1x 74HC154
+- 1x 74HC374
+- 1x 74LS02
+- 1x 74LS244
+- 4x 100 nF capacitors
+- 2x 470 Ohm resistor
+- 1x LED bargraph MV57164 or equivalent
+- 2x resistor array (each one contains 4x470 Ohm single resistors, no common pin)
+
+

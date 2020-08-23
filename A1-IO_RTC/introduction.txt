@@ -1,0 +1,147 @@
+
+
+	+-------------------------------+
+	! APPLE-1 I/O & REAL TIME CLOCK !
+	+-------------------------------+
+
+
+This boards provide:
+- 16 Digital Outputs (TTL level) with LEDs
+- 8 Analog Inputs (8 bit sampling)
+- 4 Digital Inputs (TTL level)
+- Battery backed-up Real Time Clock with Calendar
+- 1-Wire BUS for the temperature probe DS18B20
+- TTL Serial out for ATMEGA debug
+- 4 spare LED
+- Real Time Clock can be adjusted very easily when needed.
+
+
+All the functions can be accessed via two short ASM routines, explained in this document.
+
+First routine reads a specific "register" from the ATMEGA. 
+The content of this so called "register" can be a hour, a minute, a voltage, a logic level, a temperature... etc.
+Register's mapping is shown in the table below.
+
+The second routine is used to output bits in the real world in order to turn on light, spin motors etc.
+For monitoring purposes, all 16 output bits are connected to LEDs.
+
+TL;DR 
+First routine handles INPUT channels, second handles OUTPUT channels.
+
+Routines can be called from WOZ Monitor and BASIC.
+
+Before wiring CS please read carefully Apple-1 documentation and memory mapping in order to avoid conflicts 
+between periperals and potential damages.
+
+VIA's BASE ADDRESS = $2000 (8192 decimal) is assumed from now on (wire between "CS" and "2")
+It is also assumed that both routines have been loaded/typed in memory.
+
+
+---------------------------------------------------------
+SINGLE REGISTER READ (code starts at $0600, 1536 decimal)
+---------------------------------------------------------
+
+This ASM routines relies on the following memory locations to read desired register and to store its value:
+$0280   (640 decimal)	requested ATMEGA register index (see list at the end)
+$0281   (641 decimal)	value of requested ATMEGA register
+
+To read a specific ATMEGA register:
+- Write register's index in location $0280
+- Run the routine
+- Read register's value in location $0281
+
+Example: to read the current minute (register=1)
+280: 1 {ENTER}
+600R {ENTER}
+281 {ENTER} --> the current minute of the hour will be displayed
+
+
+Example in BASIC: to read the analog channel 6 (analog channel 6 = register 15)
+POKE 640,15 {ENTER}
+CALL 1536 {ENTER}
+PRINT PEEK (641) {ENTER} --> sampled value of analog channel 6 will be displayed
+
+
+Current (v0.64c) register list and content:
+
+  REGISTER  CONTENT
+  --------  -----------------------------------------------------
+  00        HOUR
+  01        MINUTE
+  02        SECOND
+  03        DAY
+  04        MONTH
+  05        YEAR
+  06        TEMPERATURE FROM RTC
+  07        TEMPERATURE FROM DS18B20 (when connected AND enabled)
+  08        DECIMAL DIGITS OT THE TEMPERATURE ABOVE (register 07)
+  10        ANALOG READ CHANNEL 1
+  11        ANALOG READ CHANNEL 2
+  12        ANALOG READ CHANNEL 3
+  13        ANALOG READ CHANNEL 4
+  14        ANALOG READ CHANNEL 5
+  15        ANALOG READ CHANNEL 6
+  16        ANALOG READ CHANNEL 7
+  17        ANALOG READ CHANNEL 8
+  20        DIGITAL READ CHANNEL 1
+  21        DIGITAL READ CHANNEL 2
+  22        DIGITAL READ CHANNEL 3
+  23        DIGITAL READ CHANNEL 4
+  --------  -----------------------------------------------------
+
+
+Note to DS18B20 High-Precision Temperature Probe.
+Polling this device is VERY time consuming, up to hundreds of milliseconds with the maximum accuracy.
+The probe must properly connected to 1-WIRE connector AND enabled AT POWER UP by wiring temporarily the
+Digital Inputs D1..D3 according to the following grid:
+
+		D1	D2	D3	D4
+EXCLUDED	-	-	-	-	(default condition with no wiring due to internal pull-up Resistors)
+9 BIT ACCURACY	0	-	-	-	(resolution=0.5 degrees, conversion time ~95 ms)
+10 BIT ACCURACY	-	0	-	-	(resolution=0.25 degrees, conversion time ~190 ms)
+11 BIT ACCURACY - 	-	0	-	(resolution=0.125 degrees, conversion time ~375 ms)
+12 BIT ACCURACY	-	-	-	0	(resolution=0.0625 degrees, conversion time ~750 ms)
+
+Internal pull-up resistors on Digital Inputs will keep the probe inactive unless a connection to GND is made.
+
+Example: to enable the probe and set it to 11 BIT of accuracy
+- With the Apple-1 powered OFF: connect D3 to GND,
+- Switch on the Apple-1,
+- Remove the connection --> the probe has been enabled and can be read through its registers.
+
+
+
+
+
+
+-------------------------------------------------------------
+SHIFT REGISTER DATA OUT (code starts at $0630, 1584 decimal )
+-------------------------------------------------------------
+This routine relies on the following memory locations:
+$0282	Shift Register HIBYTE - HEX value representing the binary 1/0 combination desired in output channels 9..16
+$0283   Shift Register LOBYTE - HEX value representing the binary 1/0 combination desired in output channels 1..8
+
+The Digital Outputs of this board are meant to be used with Relays, lights and everything that does not require
+a high speed switching. Data/bits in previous registers are shifted out at a fraction of Phi2 clock.
+Let's assume Phi2 clock = 1 MHz --> 1 cycle is 1 microsecond.
+According to 65C22's specifications CB1 Shift Clock is Phi2/2 when SR is under Phi2 control, that is 2 microseconds.
+This means that 2*16=32 microseconds will be taken to shift out all 16 bits.
+
+Example: light up all the 16 LEDs corresponding to the Digital Outputs ($FF = binary 11111111)
+282: FF {ENTER}
+283: FF {ENTER}
+630R {ENTER} --> all the 16 LED's will light up
+
+Example in BASIC: light up only the LEDs number 1 and 16 (decimal 1 = binary 00000001, decimal 128 = binary 10000000)
+POKE 642,1 {ENTER}
+POKE 643,128 {ENTER}
+CALL 1584 {ENTER} --> LEDs 1 and 16 will light up
+
+
+Note to Digital Output connector:
+There are 20 LEDs but only 16 are actually connected to Shift Register circuitry. Remaining 4 are meant to be "spare" 
+and available to the user for monitoring purposes (TTL levels).
+
+
+March 2020,
+Claudio Parmigiani

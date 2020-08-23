@@ -1,0 +1,32 @@
+;SINGLE REGISTER READ
+;	Requirements: PCB v0.94c, ATMEGA32 FW v0.94c
+;	VIA Base Address = $2000 (8192 DECIMAL)
+;	- write desidered register in $0280,
+;	- execute program
+;	- read value in $0281
+;	RESET after run may be necessary only in WOZ Monitor. From BASIC: CALL 1536.
+
+define DDRB $2002
+define DDRA $2003
+define IRB $2000
+define IRA $2001
+define REGISTER $0280
+define VALUE $0281
+
+LDA #$0		;all PORTB channels set as input
+STA DDRB	;set DDRB
+LDA #$40	;all PORTA channels except bit6 (PA6, RW signal) are input
+STA DDRA	;set DDRA
+LOOP:
+	LDA #$80	;load 10000000 in A (pattern of STROBE signal coming from ATMEGA)
+	LDX IRB		;load IRB in X
+	BIT IRA		;check for STROBE signal=HIGH in IRA memory location
+	BEQ LOOP	;if not, loop again
+	LDA IRA		;load current register index to A
+	CMP REGISTER	;compare to requested register index
+	BNE LOOP	;if not loop again
+	STX VALUE	;store X into VALUE
+	RTS
+
+0600: a9 00 8d 02 20 a9 40 8d 03 20 a9 80 ae 00 20 2c 
+0610: 01 20 f0 f6 ad 01 20 cd 80 02 d0 ee 8e 81 02 60

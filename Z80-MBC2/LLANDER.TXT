@@ -1,0 +1,82 @@
+10 REM *********************************************************
+20 REM *                                                       *
+30 REM *      YET ANOTHER VERSION OF LUNAR LANDER !!!!         *
+40 REM *                                                       *
+50 REM *      WRITTEN BY: CLAUDIO PARMIGIANI ---- 2019         *
+60 REM *                                                       *
+70 REM *            FOR MBASIC80 AND Z80-MBC2 !                *
+80 REM *                                                       *
+90 REM *********************************************************
+91 PRINT CHR$(27);"[2J"
+92 GOSUB 3000:GOSUB 2000
+100 S=-500:A=300000!:K=.2
+105 PRINT CHR$(27);"[3;1H"
+110 IF A<=0 THEN 200
+120 S=S-G:A=A+S:G=K
+130 T$=INKEY$: T=VAL(T$)
+132 IF U=3 THEN T=0
+135 IF F>0 THEN G=G-1*T ELSE F=0:T=0
+140 F=F-3*T
+145 IF T>0 THEN OUT 1,0:OUT 0,1 ELSE GOSUB 3000
+148 PRINT "--------------------------"
+150 PRINT "V. SPEED -> ";:IF U=0 THEN PRINT " *ERROR*  " ELSE PRINT USING "+###.
+#";S;:PRINT " M/S"
+151 PRINT "ALTITUDE ->  ";:IF U=1 THEN PRINT "*ERROR*" ELSE PRINT USING "#####";
+A/10;:PRINT " M"
+152 PRINT "FUEL TANK >  ";:IF U=2 THEN PRINT "*ERROR*" ELSE PRINT USING "####";F
+;:PRINT "   "
+153 PRINT "THRUSTERS >  ";: IF U=3 THEN PRINT "*ERROR*" ELSE PRINT USING "#";T;:
+PRINT "      "
+154 PRINT "--------------------------"
+170 IF A>10000 THEN PRINT "               ":GOSUB 1040 ELSE PRINT "PROXIMITY ALE
+RT":GOSUB 1000
+180 PRINT "--------------------------"
+181 PRINT "STATUS -> ";S$
+182 PRINT "--------------------------"
+185 GOSUB 4000
+190 GOTO 105
+200 FOR I=1 TO 12:PRINT:NEXT I
+205 IF S<=-7 THEN A$="CRASHED ON THE SURFACE!!! :-("
+210 IF S>-7 THEN A$="THE LANDER IS DAMAGED AFTER THE HARD LANDING!"
+215 IF S>-5 THEN A$="SAFELY LANDED"
+220 IF S>-3 THEN A$="SMOOTHLY LANDED! :-)"
+250 PRINT:PRINT USING "LANDING SPEED = +###.#";S;:PRINT " M/S"
+260 PRINT:PRINT"LANDER STATUS: ";A$
+270 PRINT:INPUT "PLAY AGAIN (Y/N) ";A$
+280 IF A$="Y" THEN 5
+290 GOSUB 3000
+299 END
+1000 IF L=0 THEN L=1 ELSE L=0
+1020 OUT 1,0
+1030 OUT 0,L
+1040 FOR I=1 TO 20:NEXT I
+1050 RETURN
+2000 PRINT "--------------------------------------------------------"
+2001 PRINT "TEXTUAL LUNAR LANDER GAME"
+2002 PRINT "--------------------------------------------------------":PRINT
+2003 PRINT "FIRE THRUSTERS WITH KEYS 1..9"
+2004 PRINT "TO BRAKE THE DESCENT OF THE LANDER."
+2005 PRINT "THE BIGGER THE THRUST, THE HIGHER THE FUEL CONSUMPTION."
+2006 PRINT "TEMPORARY FAULTS MAY OCCUR."
+2010 PRINT "--------------------------------------------------------"
+2020 PRINT:PRINT
+2030 INPUT "DIFFICULTY (1=EASY .. 5=IMPOSSIBLE)";D
+2040 IF (D<1 OR D>5) THEN 2030
+2050 F=3000-D*100
+2060 PRINT CHR$(27);"[2J"
+2999 RETURN
+3000 OUT 1,0:OUT 0,0
+3010 RETURN
+4000 P=RND(5):Q=.995-D/1000
+4020 IF P>Q THEN GOSUB 5000
+4030 W=W-1: IF W<0 THEN W=0:U=4
+4050 IF U=0 THEN S$="ACC. READ FAULT "
+4060 IF U=1 THEN S$="ALTIMETER FAULT "
+4070 IF U=2 THEN S$="FUEL READ ERROR "
+4080 IF U=3 THEN S$="THRUSTERS FAULT "
+4090 IF U=4 THEN S$="NOMINAL         "
+4999 RETURN
+5000 W=INT(RND(5)*50)
+5010 U=INT(RND(5)*4)
+5999 RETURN
+

@@ -1,0 +1,70 @@
+This documents describe the two ASM routines that are dedicated to:
+- initialization of the HD44780/ST7066 compatible display
+- position the cursor in a specific screen location
+
+Both routines rely on the "Shift Register Data Out" ASM Routine.
+It is assumed that it has been already loaded/typed in memory.
+It is also assumed that the LCD has been wired as follows:
+	- LCD'S REGISTER SELECT "RS" CONNECTED TO DIGITAL OUTPUT 1
+	- LCD'S DATA LINES "DB0" TO "DB8" CONNECTED TO DIGITAL OUTPUT 9 TO 16
+	- LCD'S ENABLE "E" CONNECTED TO CS2 LINE ON THE OUTPUT CONNECTOR. 
+	- "CS2" LINE THROUGH-HOLE CONNECTED TO THROUGH-HOLE "B" (ADDR $B000=45056 --> 45056-65536=-20480 IN BASIC)
+	- LCD'S "R/W" TO GND, POWER AND CONTRAST BY THE BOOK
+
+
+-------------------------------------------------------
+LCD Initialization (Code starts at $0650, 1616 decimal)
+-------------------------------------------------------
+
+To initialize the display just run the routine:
+650R {ENTER}
+
+In BASIC just: CALL 1616 {ENTER}
+
+The display will be cleared and a blinking cursor will blink in the upper left corner
+
+
+
+---------------------------------------------------
+LCD Set Cursor (Code starts at $0700, 1792 decimal)
+---------------------------------------------------
+
+This ASM routines uses the following memory locations to read desired cursor row and column:
+$0284	(decimal 644)	desired row of display 
+$0285	(decimal 645)	desired column of display
+
+The mapping of the Display RAM (DDRAM) in these devices is a bit weird, especially for the row value:
+1st row: address $00
+2nd row: address $40
+3rd row: address $10
+4th row: address $50
+
+The desired column value must be added to the corresponding row value, as an offset.
+The resulting byte must be written to the Shift Register, toghether with other control signals handled by the routine.
+
+Example: move the cursor to the second row from the top, position number 10.
+284: 40 {ENTER}
+285: A {ENTER}
+700R {ENTER} --> the cursor will blink in the position 10 of the second row from the top.
+
+Example in BASIC: move the cursor to the second row from the top, position number 12.
+POKE 644, 120 {ENTER}
+POKE 645, 12 {ENTER}
+CALL 1792 {ENTER} --> the cursor will blink in the position 12 of the fourth line from the top.
+
+
+
+Note:
+A "pure" Shift Register technique cannot be used here to generate all the command&control signals.
+The SR is simply too slow (32 microseconds for 16 bits): the shitfing bits are easily detected by the display and 
+interpreted as commands (and they should not).
+This leads to errors in visualization.
+Due to the extreme reactivity of these displays it was decided to add a signal to the output connector of the board.
+This signal (a standard negative edged Chip Select signal) comes from the onboard demux 74154 through CS2 connection to one of 154's outputs.
+Every time any of the addresses related to that memory area is read or written, a LOW signal will be generated for about 500 nanoseconds.
+This signal has been used as ENABLE command for the display, at the end of the data preparation on the Shift Register.
+
+
+
+March 2020,
+Claudio Parmigiani

@@ -1,0 +1,1129 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Apple-1 UART &amp; Wi-Fi Modem</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Segoe UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+	{mso-style-link:"Comment Text Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-link:"Header Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-link:"Footer Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#954F72;
+	text-decoration:underline;}
+code
+	{font-family:"Courier New";}
+pre
+	{mso-style-link:"HTML Preformatted Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+p.MsoCommentSubject, li.MsoCommentSubject, div.MsoCommentSubject
+	{mso-style-link:"Comment Subject Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;
+	font-weight:bold;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-link:"Balloon Text Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:9.0pt;
+	font-family:"Segoe UI",sans-serif;}
+span.MsoPlaceholderText
+	{color:gray;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:36.0pt;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:36.0pt;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+span.CommentTextChar
+	{mso-style-name:"Comment Text Char";
+	mso-style-link:"Comment Text";}
+span.CommentSubjectChar
+	{mso-style-name:"Comment Subject Char";
+	mso-style-link:"Comment Subject";
+	font-weight:bold;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-link:"Balloon Text";
+	font-family:"Segoe UI",sans-serif;}
+span.HeaderChar
+	{mso-style-name:"Header Char";
+	mso-style-link:Header;}
+span.FooterChar
+	{mso-style-name:"Footer Char";
+	mso-style-link:Footer;}
+span.st
+	{mso-style-name:st;}
+span.HTMLPreformattedChar
+	{mso-style-name:"HTML Preformatted Char";
+	mso-style-link:"HTML Preformatted";
+	font-family:"Courier New";}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=IT link="#0563C1" vlink="#954F72">
+
+<div class=WordSection1>
+
+<p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:left'><b><span lang=EN-GB style='font-size:36.0pt;line-height:
+107%'>APPLE-1 UART &amp; Wi-Fi MODEM</span></b></p>
+
+<p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:left'><span lang=EN-GB>By Claudio Parmigiani</span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:left'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:left'>
+<img width=614 height=569 src="a1_uart_files/image001.jpg">
+<br clear=ALL>
+</p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><b><span lang=EN-GB style='font-size:16.0pt;line-height:107%'>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><b><span lang=EN-GB style='font-size:16.0pt;line-height:107%'>PURPOSE</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Allow the Apple-1 computer (and Replicas) to handle
+connections with <i>telnet</i> protocol (either outgoing or incoming) in order
+to connect to existing BBSes or chat sessions (keyboard-to-keyboard)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><b><span lang=EN-GB style='font-size:16.0pt;line-height:107%'>IMPLEMENTATION</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>An </span><span class=st><span lang=EN-US>Asynchronous
+Communications Interface Adapter (</span></span><em><span lang=EN-US
+style='font-family:"Calibri",sans-serif'>ACIA</span></em><span class=st><span
+lang=EN-US>)</span></span><span lang=EN-US> </span><span lang=EN-GB>6551 has
+been used.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>It was commonly used as an UART <i>(Universal Asynchronous
+Receiver-Transmitter)</i> for the 6502 microprocessor; it is addressed through
+a 74154 <i>(4 to 16 lines decoder/demultiplexer).</i></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>UART is then connected to an ESP8266 that acts as an
+Hayes-compatible Wi-Fi Modem.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB><br>The ESP8266 must be programmed following the
+instructions:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-US><a
+href="https://1200baud.wordpress.com/2017/03/04/build-your-own-9600-baud-c64-wifi-modem-for-20/"><span
+lang=EN-GB>https://1200baud.wordpress.com/2017/03/04/build-your-own-9600-baud-c64-wifi-modem-for-20/</span></a></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB><br>A small Terminal program written in Assembly is used
+to interact with it.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><b><span lang=EN-GB style='font-size:16.0pt;line-height:107%'>CIRCUIT
+&amp; ADDRESSING</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Power is derived from the 5V main bus. 74154 acts as
+Address Decoder as described below.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Apple-1’s Address lines from </span><span lang=EN-GB
+style='font-family:"Courier New"'>A12</span><span lang=EN-GB> to </span><span
+lang=EN-GB style='font-family:"Courier New"'>A15</span><span lang=EN-GB> (</span><span
+lang=EN-GB style='font-family:"Courier New"'>A15</span><span lang=EN-GB> is
+MSB) are connected to 74154’s A...D input lines (D is MSB) in order to split
+the addressable 64 kiB into 4 kiB chunks. </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>This operation is very common in this architecture. </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB><br>Although it would have been possible to use the
+signals </span><span lang=EN-GB style='font-family:"Courier New"'>R</span><span
+lang=EN-GB>, </span><span lang=EN-GB style='font-family:"Courier New"'>S</span><span
+lang=EN-GB> and </span><span lang=EN-GB style='font-family:"Courier New"'>T</span><span
+lang=EN-GB> (coming from the mainboard’s 74154, which perform the same
+operation) they were not used.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>R</span><span
+lang=EN-GB> line is commonly used with Cassette Interface; </span><span
+lang=EN-GB style='font-family:"Courier New"'>S</span><span lang=EN-GB> and </span><span
+lang=EN-GB style='font-family:"Courier New"'>T</span><span lang=EN-GB> are
+usually not used (not connected) on to original boards. <br>To guarantee the
+functionality of the interface with unmodified original boards the 74154
+perform its own “four most significant bit” Address decoding.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB><br>It has been decided that 75154’s output named “7”
+(corresponding to Addresses from </span><span lang=EN-GB style='font-family:
+"Courier New"'>$7000 </span><span lang=EN-GB>to </span><span lang=EN-GB
+style='font-family:"Courier New"'>7FFF</span><span lang=EN-GB>) is assigned to
+the 6551. <br>To perform this selection, output “7” has been connected to 6551’s </span><span
+lang=EN-GB style='font-family:"Courier New"'>/CS1 </span><span lang=EN-GB>pin.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Other outputs might be used in the future in order to
+add functionality to the board, i.e. EPROM etc.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB><br>The other 6551’s Chip Select pin, </span><span
+lang=EN-GB style='font-family:"Courier New"'>CS0</span><span lang=EN-GB>, is
+not used and it has been tied to +5V.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Data Bus signals (</span><span lang=EN-GB
+style='font-family:"Courier New"'>D0</span><span lang=EN-GB> to </span><span
+lang=EN-GB style='font-family:"Courier New"'>D7</span><span lang=EN-GB>, </span><span
+lang=EN-GB style='font-family:"Courier New"'>D7</span><span lang=EN-GB> is MSB)
+are connected to 6551, as well as </span><span lang=EN-GB style='font-family:
+"Courier New"'>/IRQ</span><span lang=EN-GB>, </span><span lang=EN-GB>&#632;</span><span
+lang=EN-GB style='font-family:"Courier New"'>2</span><span lang=EN-GB>, </span><span
+lang=EN-GB style='font-family:"Courier New"'>R/W</span><span lang=EN-GB> and </span><span
+lang=EN-GB style='font-family:"Courier New"'>/RES</span><span lang=EN-GB>.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>6551’s </span><span lang=EN-GB style='font-family:
+"Courier New"'>RS0</span><span lang=EN-GB> and </span><span lang=EN-GB
+style='font-family:"Courier New"'>RS1</span><span lang=EN-GB> inputs are
+respectively connected to Apple-1’s </span><span lang=EN-GB style='font-family:
+"Courier New"'>A0</span><span lang=EN-GB> and </span><span lang=EN-GB
+style='font-family:"Courier New"'>A1</span><span lang=EN-GB> Address lines:
+they will be used to read and write the four registers of the 6551.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>6551’s TXD and RXD are respectively connected to the
+ESP8266’s RX and TX.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><b><span lang=EN-GB style='font-size:16.0pt;line-height:107%'>FLOW
+CONTROL</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Flow control (either hardware or software) is
+disabled. <br>The transmission between ESP8266 and 6551 is basically a three-wire
+(TX/RX/Ground) connection.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB><br>In this first implementation, the communication
+parameters have been fixed to:</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:justify;text-indent:-18.0pt'><span lang=EN-GB style='font-family:
+Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span lang=EN-GB>300 baud, No Parity, 8 data bit, 1 stop bit</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB><br>Due to the slowness of the video terminal part of the
+Apple-1 a higher speed could lead to incoming data loss. Further tests will be
+done, along with </span><span lang=EN-GB style='font-family:"Courier New"'>RTS/CTS
+</span><span lang=EN-GB>hardware flow control.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><i><span lang=EN-GB><br>At 300 baud, without flow control, the data
+flow is very smooth and stable: no data loss has been detected, even during long downloads.<br></span></i></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB><br>All 6551 registers are initialized by the Terminal
+Program to perform the operation above, signal lines have been connected as
+follows:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:justify;text-indent:-18.0pt'><span lang=EN-GB style='font-family:
+Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='font-family:"Courier New"'>DCD</span><span
+lang=EN-GB> and </span><span lang=EN-GB style='font-family:"Courier New"'>/DSR </span><span
+lang=EN-GB>are connected to Ground</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:justify;text-indent:-18.0pt'><span lang=EN-GB style='font-family:
+Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='font-family:"Courier New"'>/RTS</span><span
+lang=EN-GB> and </span><span lang=EN-GB style='font-family:"Courier New"'>/CTS </span><span
+lang=EN-GB>are connected together</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB><br>On the ESP8266 side: only </span><span lang=EN-GB
+style='font-family:"Courier New"'>Vin</span><span lang=EN-GB> (+5V), </span><span
+lang=EN-GB style='font-family:"Courier New"'>GND</span><span lang=EN-GB>
+(Ground), </span><span lang=EN-GB style='font-family:"Courier New"'>TX</span><span
+lang=EN-GB> and </span><span lang=EN-GB style='font-family:"Courier New"'>RX</span><span
+lang=EN-GB> are used. </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>D1 (</span><span lang=EN-GB style='font-family:"Courier New"'>/RTS</span><span
+lang=EN-GB>), D2 (</span><span lang=EN-GB style='font-family:"Courier New"'>/CTS</span><span
+lang=EN-GB>) and D4 (</span><span lang=EN-GB style='font-family:"Courier New"'>DCD</span><span
+lang=EN-GB>) are left unconnected.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Flow Control, Speed, Interrupts and all other
+parameters are configured by four registers: TX-RXDATA (</span><span
+lang=EN-GB style='font-family:"Courier New"'>$7000</span><span lang=EN-GB>),
+STATUS (</span><span lang=EN-GB style='font-family:"Courier New"'>$7001</span><span
+lang=EN-GB>), COMMAND (</span><span lang=EN-GB style='font-family:"Courier New"'>$7002</span><span
+lang=EN-GB>), and CONTROL (</span><span lang=EN-GB style='font-family:"Courier New"'>$7003</span><span
+lang=EN-GB>). Some of them are bidirectional. <br>For an exhaustive explanation,
+please refer to the datasheet.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><b><span lang=EN-GB style='font-size:16.0pt;line-height:107%'>INTERRUPT
+HANDLING</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>According to the Apple-1 manual, neither </span><span
+lang=EN-GB style='font-family:"Courier New"'>/IRQ</span><span lang=EN-GB> nor </span><span
+lang=EN-GB style='font-family:"Courier New"'>/NMI</span><span lang=EN-GB>
+signals are used by the system. <br>By the way, these lines are fully wired from
+the expansion connector to the CPU.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>IRQ </span><span lang=EN-GB>vector is hard-coded on
+to the PROM to point at address </span><span
+lang=EN-GB style='font-family:"Courier New"'>$0000</span><span lang=EN-GB>.</span> <br>This means that when </span><span
+lang=EN-GB style='font-family:"Courier New"'>/IRQ</span><span lang=EN-GB> line
+is connected to Ground the 6502 will start to execute code from location </span><span
+lang=EN-GB style='font-family:"Courier New"'>$0000</span><span lang=EN-GB>.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB><br>According to 6551 datasheet, many events can trigger
+the </span><span lang=EN-GB style='font-family:"Courier New"'>/IRQ</span><span
+lang=EN-GB> line.<br>An appropriate initialization of the 6551’s registers trigger
+the </span><span lang=EN-GB style='font-family:"Courier New"'>/IRQ</span><span
+lang=EN-GB> line when the <i>Receiver Data Register</i> is full. <br>This means
+that all the bits of an incoming character have been received: the character
+must be read and displayed on the screen.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB><br>The IRQ subroutine below <b>must be stored on to
+Apple-1 RAM starting from Address </b></span><b><span lang=EN-GB
+style='font-family:"Courier New"'>$0000</span></b><span lang=EN-GB>:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-size:8.0pt;line-height:107%;font-family:
+"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>IRQ:      PHA</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>          LDA #$08   ;RX
+Data Register Full bit</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>CHECKR:    BIT
+STATUS</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>          BEQ
+CHECKR</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>          LDA
+RXDATA</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>          JSR ECHO</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>          PLA</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>          RTI</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>HEX Dump, for your convenience:</span></p>
+
+<pre><span lang=EN-GB style='font-size:11.0pt'>0000: </span><span
+style='font-size:11.0pt'>48 a9 08 2c 01 70 f0 fb ad 00 70 20 ef ff 68 40 </span></pre>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-size:12.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Please refer to the complete listing at the end of
+the document for the definition of </span><span lang=EN-GB style='font-family:
+"Courier New"'>STATUS</span><span lang=EN-GB>, </span><span lang=EN-GB
+style='font-family:"Courier New"'>RXDATA</span><span lang=EN-GB>, </span><span
+lang=EN-GB style='font-family:"Courier New"'>and ECHO</span><span lang=EN-GB>.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><b><span lang=EN-GB style='font-size:16.0pt;line-height:107%'>CHARACTER
+ENCODING</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Apple-1 handles only upper case characters and
+forces the <i>Most Significant Bit</i> to 1. </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Accordingly to standard ASCII tables, this bit should
+be 0 for the first 127 characters (which include the classic printable characters). </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Therefore, it is not possible to send directly a
+typed character to the UART because it would be incorrectly interpreted by the
+Wi-Fi modem (or by the remote host, if connected). </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB><br>The MSB bit must be zeroed first by a <i>bytewise AND
+masking</i> with the binary value </span><span lang=EN-GB style='font-family:
+"Courier New"'>01111111</span><span lang=EN-GB> (</span><span lang=EN-GB
+style='font-family:"Courier New"'>$7F</span><span lang=EN-GB>).</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB><br>The result of this operation is that only upper case characters will 
+be sent to the Wi-Fi Modem.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>The entire Apple-1 character set can be transmitted,
+from SPACE (Decimal=32, </span><span lang=EN-GB style='font-family:"Courier New"'>$20</span><span
+lang=EN-GB> in standard ASCII) to UNDERSCORE “_” (Decimal=95, </span><span
+lang=EN-GB style='font-family:"Courier New"'>$5F</span><span lang=EN-GB> in
+standard ASCII).</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB><br>On the incoming side, no <i>masking</i> is needed:
+Apple-1 correctly displays the characters (in upper case, of course) even if
+the incoming code refers to a lower-case character, ignoring also the MSB bit.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Example:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><img border=0 width=1137 height=166 id="Picture 5"
+src="a1_uart_files/image002.png"></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Any incoming lower case character will be correctly
+displayed in upper case.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><b><span lang=EN-GB style='font-size:16.0pt;line-height:107%'>SETUP/INITIALIZATION
+OF THE WI-FI MODEM</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>The ESP8266 acts as a Hayes-compatible modem. It uses
+a subset of the standard AT commands. </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>The entire command/parameter set is displayed with
+the command </span><span lang=EN-GB style='font-family:"Courier New"'>AT?</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB><br>At the power up: a welcome message will be displayed
+at the first keypress. </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>See chapter “Limitations – Local echo” for setting
+the local echo for keypresses.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB><br>If a Wi-Fi network has been previously set up the
+modem will try to connect to it.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB><br>The most important commands are:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>ATI </span><span
+lang=EN-GB>to display the current network status (Connected/Disconnected, IP,
+etc.),</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>AT$SSID</span><span
+lang=EN-GB>=yourWIFInetworkSSID to store the name of your Wi-Fi network,</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>AT$PASS</span><span
+lang=EN-GB>=yourPassword to store the password of your Wi-Fi network,</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>AT&amp;W </span><span
+lang=EN-GB>to write all the parameters into the NVRAM,</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>ATC1</span><span
+lang=EN-GB> to connect to the Wi-Fi network (may require several attempts the
+first times).</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB><br>Please refer to </span><span lang=EN-GB
+style='font-family:"Courier New"'>AT?</span><span lang=EN-GB> command output
+for other commands and parameters.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><b><span lang=EN-GB style='font-size:16.0pt;line-height:107%'>CONNECT
+TO A BBS</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>To connect to a remote BBS just use the command:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>ATDT
+bbsname.domain:portnumber</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>where </span><span lang=EN-GB style='font-family:
+"Courier New"'>bbsname.domain </span><span lang=EN-GB>is the domain name of the
+BBS you want to “call” and </span><span lang=EN-GB style='font-family:"Courier New"'>portnumber</span><span
+lang=EN-GB> is the port number.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB><br>Example:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>ATDT
+A80SAPPLEIIBBS.DDNS.NET:6502</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB><br>then follow the instructions and enjoy…!</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><b><span lang=EN-GB style='font-size:16.0pt;line-height:107%'>CONSOLE-TO-CONSOLE
+CONNECTION</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>The modem usually listen to port 6400, in order to
+handle incoming connections. <br>Every telnet connection </span><span lang=EN-GB>addressed
+to the</span><span lang=EN-GB style='font-family:"Courier New"'>
+modemWiFiIPaddress:6400</span><span lang=EN-GB> will produce a RING message on
+to the Apple-1 screen and will initialize a two-way chat session with the
+calling party.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>A busy message will be displayed if the ESP8266 has
+already an active connection.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><b><span lang=EN-GB style='font-size:16.0pt;line-height:107%'>LIMITATIONS</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><i><span lang=EN-GB>SSID/Password with lower case characters</span></i></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Because Apple-1 handles only upper case characters,
+if your Wi-Fi network name/password contain one or more lower case characters,
+it will be impossible to set up a connection.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>It is possible to use the USB interface to interact
+with the modem and program it properly. </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Modem’s USB interface will be recognized by a modern
+PC as a Serial Port (Linux / Windows). </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>COM number / Linux <i>device file</i> name may vary.
+Use any Terminal program (i.e. PuTTY / minicom) to setup the modem.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><u><span lang=EN-GB>Always remember to</span></u><span lang=EN-GB>:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-top:0cm;margin-right:0cm;
+margin-bottom:0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-align:justify;
+text-indent:-18.0pt'><span lang=EN-GB>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Disconnect the <i>Apple-1 UART &amp; Wi-Fi modem</i>
+board from the mainboard BEFORE connecting the USB (if you do not do this, PC’s
+USB port 5V will try to power up the entire Apple-1…)</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-top:0cm;margin-right:0cm;
+margin-bottom:0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-align:justify;
+text-indent:-18.0pt'><span lang=EN-GB>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Save the settings with command </span><span
+lang=EN-GB style='font-family:"Courier New"'>AT&amp;W</span><span lang=EN-GB>
+BEFORE disconnecting the USB.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><i><span lang=EN-GB>Local echo on/off</span></i></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Local echo is the modem feature that just retransmit
+back every character received from the keyboard.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>The Terminal program do not print anything on the
+screen. This means that, at least for the first commands, <u>the digitation of
+the keys will be “blind”</u>.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Local echo must be enabled with the command </span><span
+lang=EN-GB style='font-family:"Courier New"'>ATE1</span><span lang=EN-GB> (or
+disabled with </span><span lang=EN-GB style='font-family:"Courier New"'>ATE0</span><span
+lang=EN-GB>).</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Once </span><span lang=EN-GB style='font-family:"Courier New"'>ATE1</span><span
+lang=EN-GB> command is issued, every keypress will be visible on the screen.
+Save with </span><span lang=EN-GB style='font-family:"Courier New"'>AT&amp;W</span><span
+lang=EN-GB>.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><i><span lang=EN-GB>Double Carriage Return / Telnet Echo</span></i></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>When dialling certain systems, a single Enter/Return
+keypress might not be enough to perform the desired action (i.e. login).<br>A
+second press of the Enter/Return usually works. </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>This happens because of the configuration of the
+remote server. It can be instructed to accept as &quot;Carriage Return&quot;
+the ASCII character corresponding to the Enter key (Decimal=13, </span><span
+lang=EN-GB style='font-family:"Courier New"'>$0D</span><span lang=EN-GB>), or a
+sequence of &quot;Carriage Return&quot; and &quot;Linefeed&quot; (Decimal=10, </span><span
+lang=EN-GB style='font-family:"Courier New"'>$0A</span><span lang=EN-GB>). </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>In this first implementation there is no “Linefeed” code appended 
+to “Carriage Return”.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>On other systems, it may happen that there is no echo
+of the characters typed, at all.<br>This is a setting of the remote system. ATE1
+command might be also ineffective.<br>In this case, adding a </span><span lang=EN-GB
+style='font-family:"Courier New"'>JSR ECHO</span><span lang=EN-GB> call in the
+source code of the Terminal (see the commented line) will do the trick.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Please note that under other circumstances this additional call
+may lead to a <i>double echo </i>issue, that could however be mitigated by using </span><span
+lang=EN-GB style='font-family:"Courier New"'>ATE0</span><span lang=EN-GB>
+Command.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><i><span lang=EN-GB>ANSI (in)compatibility</span></i></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Usually, modern Terminals supports ANSI codes.<br>ANSI codes are
+sequences of bytes used to control the position of the cursor, colours and
+other options. Apple-1 video section is more like a Teletype than a Terminal:
+there is neither cursor control nor CLEAR SCREEN, BACKSPACE, video RAM.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>So ANSI is not supported, at all.<br>If you connect to
+systems that use ANSI codes, you will see many garbage characters on the
+screen. </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><i><span lang=EN-GB>&nbsp;</span></i></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><i><span lang=EN-GB>CFFA1 Compatibility</span></i></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>The CFFA1 CompactFlash Card has 28 kiB of SRAM on-board
+that can be mapped from location </span><span lang=EN-GB style='font-family:
+"Courier New"'>$1000</span><span lang=EN-GB> to </span><span lang=EN-GB
+style='font-family:"Courier New"'>$7FFF</span><span lang=EN-GB>.<br>The UART board
+has been mapped from address </span><span lang=EN-GB style='font-family:"Courier New"'>$7xxx</span><span
+lang=EN-GB>.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>To avoid unpredictable computer operation due to <i>bus
+fighting</i>, SRAM must be disabled by setting Switch S1-2 to ON (see page 10
+of the CFFA1 manual).</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>Alternatively, UART board could be remapped to
+another range of Addresses by choosing another 74154 output.<br>In this case, the
+definition of the registers in the source code of the Terminal program 
+will have to be updated accordingly.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><b><span lang=EN-GB style='font-size:16.0pt;line-height:107%'>TERMINAL
+PROGRAM</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-size:8.0pt;line-height:107%;font-family:
+"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>Code starts at
+$0600, execute with <b>600R</b></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>IRQ routine must be
+stored as well, starting from Address $0000, as stated above in this document. </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>--------------------------------------------------------------------------------------------------</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>define     TXDATA
+$7000    ;TXDATA</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>define     RXDATA
+$7000    ;RXDATA</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>define     STATUS
+$7001    ;Status Register</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>define     COMMND
+$7002    ;Command Register</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>define     CONTRL
+$7003    ;Control Register</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>define     ECHO  
+$FFEF    ;WOZ Monitor's ECHO</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>INIT:      LDA #$16        ;00010110
+(300N81, internal Oscillator)</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;text-align:justify;text-indent:36.0pt'><span
+lang=EN-GB style='font-family:"Courier New"'>STA CONTRL</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;text-align:justify;text-indent:36.0pt'><span
+lang=EN-GB style='font-family:"Courier New"'>LDA #$09        ;00001001 (no
+parity, no echo, RTS low, YES RX IRQ, DTR low)</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;text-align:justify;text-indent:36.0pt'><span
+lang=EN-GB style='font-family:"Courier New"'>STA COMMND</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;text-align:justify;text-indent:36.0pt'><span
+lang=EN-GB style='font-family:"Courier New"'>CLI             ;listen to
+Interrupts</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>LOOP:      JSR
+KBDIN</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;text-align:justify;text-indent:36.0pt'><span
+lang=EN-GB style='font-family:"Courier New"'>JMP LOOP</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>KBDIN:     LDA
+$d011       ;read key from keyboard</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>           BPL
+KBDIN</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>           LDA
+$d010</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;text-align:justify;text-indent:36.0pt'><span
+lang=EN-GB style='font-family:"Courier New"'>AND #$7F        ;set MSB to 0</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;text-align:justify;text-indent:36.0pt'><span
+lang=EN-GB style='font-family:"Courier New"'>;JSR ECHO       ;do not use: see
+chapter “Limitation – Double Carriage Return / Telnet echo”</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-GB style='font-family:"Courier New"'>          JSR
+TXCHAR</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-GB style='font-family:"Courier New"'>      
+    RTS</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>TXCHAR:    STA
+TXDATA</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>CHECKT:    LDA
+STATUS      ;Load Status Register</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>          AND #$10        ;TX
+Data Register Empty bit</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>          BEQ
+CHECKT </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>          BNE KBDIN</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-size:8.0pt;line-height:107%;font-family:
+"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB style='font-family:"Courier New"'>--------------------------------------------------------------------------------------------------</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>HEX Dump, for your convenience:</span></p>
+
+<pre><code>0600: a9 16 8d 03 70 a9 09 8d 02 70 58 20 11 06 4c 0b </code></pre><pre><code>0610: 06 ad 11 d0 10 fb ad 10 d0 29 7f 20 1f 06 60 8d </code></pre><pre><code>0620: 00 70 ad 01 70 29 10 f0 f9 d0 e6</code></pre>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><b><span lang=EN-GB>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><b><span lang=EN-GB>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><b><span lang=EN-GB style='font-size:16.0pt;line-height:107%'>SCHEMATIC</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><b><span lang=EN-GB>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><img border=0 width=934 height=986 id="Picture 1"
+src="a1_uart_files/image003.png"></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><b><span lang=EN-GB>Note: ESP8266’s /RTS, /CTS, DCD lines are not in
+use.</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><b><span lang=EN-GB>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><b><span lang=EN-GB style='font-size:16.0pt;line-height:107%'>TO-DO
+LIST</span></b></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-top:0cm;margin-right:0cm;
+margin-bottom:0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-align:justify;
+text-indent:-18.0pt'><span lang=EN-GB>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>A small storage (EPROM/EEPROM), to have the
+Terminal program ready for use.</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-top:0cm;margin-right:0cm;
+margin-bottom:0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-align:justify;
+text-indent:-18.0pt'><span lang=EN-GB>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>A true RS232 port, made with a MAX232 IC, to
+connect the board to old-style analog modem or TNCs.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><b><span lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><b><span lang=EN-GB style='font-size:16.0pt'>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><b><span lang=EN-GB style='font-size:16.0pt'>OFFICIAL VIDEO</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><b><span lang=EN-GB style='font-size:16.0pt'><a
+href="https://www.youtube.com/watch?v=RZQIiZeth6E">https://www.youtube.com/watch?v=RZQIiZeth6E</a></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><b><span lang=EN-GB>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><b><span lang=EN-GB style='font-size:16.0pt'>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><b><span lang=EN-GB style='font-size:16.0pt'>SIMILAR PROJECTS</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-GB>None known (August 2019).</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><b><span lang=EN-GB style='font-size:16.0pt;line-height:107%'>BIBLIOGRAPHY</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><i><span lang=EN-GB>6551 Wiki &amp; Datasheet</span></i></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-US><a
+href="https://en.wikipedia.org/wiki/MOS_Technology_6551"><span lang=EN-GB>https://en.wikipedia.org/wiki/MOS_Technology_6551</span></a></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-US><a
+href="http://archive.6502.org/datasheets/mos_6551_acia.pdf">http://archive.6502.org/datasheets/mos_6551_acia.pdf</a></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><i><span lang=EN-GB>74154 Datasheet</span></i></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-US><a
+href="https://www.unicornelectronics.com/ftp/Data%20Sheets/74154.pdf"><span
+lang=EN-GB>https://www.unicornelectronics.com/ftp/Data%20Sheets/74154.pdf</span></a></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><i><span lang=EN-GB>ESP8622 firmware and information</span></i></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-US><a
+href="https://1200baud.wordpress.com/2017/03/04/build-your-own-9600-baud-c64-wifi-modem-for-20/"><span
+lang=EN-GB>https://1200baud.wordpress.com/2017/03/04/build-your-own-9600-baud-c64-wifi-modem-for-20/</span></a></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-US><a href="https://github.com/RolandJuno/esp8266_modem"><span
+lang=EN-GB>https://github.com/RolandJuno/esp8266_modem</span></a></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><i><span lang=EN-GB>ASCII Table</span></i></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-US><a
+href="https://www.rapidtables.com/code/text/ascii-table.html"><span lang=EN-GB>https://www.rapidtables.com/code/text/ascii-table.html</span></a></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><i><span lang=EN-GB>HAYES Command set</span></i></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-US><a
+href="https://en.wikipedia.org/wiki/Hayes_command_set"><span lang=EN-GB>https://en.wikipedia.org/wiki/Hayes_command_set</span></a></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><i><span lang=EN-GB>ANSI Escape Codes</span></i></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-US><a
+href="https://en.wikipedia.org/wiki/ANSI_escape_code"><span lang=EN-GB>https://en.wikipedia.org/wiki/ANSI_escape_code</span></a></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><i><span lang=EN-GB>CFFA1 CompactFlash Interface for Apple-1</span></i></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-US><a
+href="http://dreher.net/projects/CFforApple1/downloads/CFFA1_Manual_1.1.pdf"><span
+lang=EN-GB>http://dreher.net/projects/CFforApple1/downloads/CFFA1_Manual_1.1.pdf</span></a></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><i><span lang=EN-GB>Apple-1 Operations manual</span></i></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify'><span lang=EN-US><a href="https://www.applefritter.com/files/a1man.pdf"><span
+lang=EN-GB>https://www.applefritter.com/files/a1man.pdf</span></a></span></p>
+
+</div>
+
+</body>
+
+</html>

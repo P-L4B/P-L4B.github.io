@@ -1,0 +1,22 @@
+
+        +-------------------------------+
+        ! APPLE-1 I/O & REAL TIME CLOCK !
+        +-------------------------------+
+
+
+BILL OF MATERIALS:
+
+- 1x ATMEGA32A PU
+- 1x VIA 65C22
+- 1x 74HC154
+- 2x 74HC164
+- 1x XTAL 16 MHz
+- 2x 22 pF ceramic capacitors
+- 5x 100 nF capacitors
+- 1x 4.7 kOhm resistor
+- 1x 10 kOhm resistor
+- 2x LED bargraph MV57164 or equivalent
+- 5x resistor array (each one contains 4x470 Ohm single resistors, no common pin)
+- 1x RTC module DS3231
+
+

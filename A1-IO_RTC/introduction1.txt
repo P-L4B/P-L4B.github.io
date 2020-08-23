@@ -1,0 +1,100 @@
+
+
+	+--------------------------------+
+	!    APPLE-1 SIMPLE I/O BOARD    !
+	+--------------------------------+
+
+
+This boards provide:
+- 8 Digital Outputs (TTL level) with LEDs
+- 8 Digital Inputs (TTL level)
+- CS lines for input & output on the user connector
+
+All the functions can be accessed without additional software:
+Simply solder a couple of wires between CS through-holes and 74154 output section:
+- CS_INPUT will be the base address to read signals coming from the real world
+- CS_OUTPUT will be the base address to write bits to the output buffer (AKA LEDs / the real world)
+
+Read carefully Apple-1 documentation and memory mapping in order to avoid conflicts 
+between periperals and potential damages.
+
+From now on it is now assumed that:
+- CS_INPUT through-hole is connected to the through-hole "9" (this will give board's input base address = $9000)
+- CS_OUTPUT through-hole is connected to the through-hole "A" (this will give board's ouput base address = $A000)
+
+---------------------
+DIGITAL CHANNELS READ
+---------------------
+
+Lets'assume that, for example, Digital Inputs are connected as follows:
+INPUT 1 = Ground
+INPUT 2 = 5V
+INPUT 3 = Ground
+INPUT 4 = Ground
+INPUT 5 = Ground
+INPUT 6 = 5V
+INPUT 7 = 5V
+INPUT 8 = 5V
+
+
+To read the electric/logic levels of the input connector just read any location between $9000 and $9FFF:
+9000 {ENTER} --> E2 will appear
+
+HEX value (E2 in this example) will be the representation of the logic level of the channels (1=HIGH=5V, 0=LOW=Ground):
+11100010 --> $E2 (226 Decimal)
+
+Output will reflect the electrical status of the inputs at the moment of reading, as stated above.
+Please note that PULL-UP resistors are active, so an open/disconnected pin will have value = 1.
+
+In BASIC: Note that $9000 is decimal 36864. This value overflows INTEGER's BASIC signed integer notation (-32767/+32767) therefore
+65536 must be subtracted from the value. 36864-65536=-28671.
+
+PRINT PEEK(-28671) {ENTER}
+Decimal 226 will appear on the screen (226 decimal = $E2 = 11100010)
+
+
+----------------------                                    
+DIGITAL OUTPUT WRITING
+----------------------
+
+Let's assume that we want to set/assert the following bit/signals on to the output connector:
+
+OUTPUT 1 = 5V
+OUTPUT 2 = nothing
+OUTPUT 3 = nothing
+OUTPUT 4 = 5V
+OUTPUT 5 = nothing
+OUTPUT 6 = nothing
+OUTPUT 7 = 5V
+OUTPUT 8 = 5V
+
+To compute the right value to write on to the output register/buffer we must convert it to Hexadecimal (and eventually to decimal):
+11001001 = $C9 = 201 decimal
+
+Then the calculated value must be written into any address in the selected output range ($A000 to $AFFF in this example):
+A000: C9 {ENTER}
+
+The LEDs will light up accordingly.
+
+IN BASIC: Note that $9000 is decimal 40960. This value overflows INTEGER's BASIC signed integer notation (-32767/+32767) therefore
+65536 must be subtracted from the value. 40960-65536=-24576.
+
+POKE -24576,201 {ENTER}
+
+The LEDs will light up accordingly.
+
+Note: Chip Select signals have been replicated to the output connector, in case they are needed for some experiment.
+
+---------------------
+    KNOWN ISSUES
+---------------------
+
+Sometimes a brief "instability" of outputs may appear before they stabilize.
+This is a known issue and it will be fixed in the next board revision.
+However it is so quick that hopefully will not interfere with your experiments (i.e. it's too fast to trigger a relay).
+
+
+
+
+March 2020
+Claudio Parmigiani

@@ -1,0 +1,52 @@
+;LCD INITIALIZE
+;	Requirements: PCB v0.94c, ATMEGA32 FW v0.94c
+;	VIA Base Address = $2000 (8192 DECIMAL)
+;	Requires:
+;	- Shift Register Data Out ASM Routine
+;	Code starts at $0650
+;	HARDWARE CONNECTIONS:
+;	- LCD'S REGISTER SELECT "RS" CONNECTED TO DIGITAL OUTPUT 1
+;	- LCD'S DATA LINES "DB0" TO "DB8" CONNECTED TO DIGITAL OUTPUT 9 TO 16
+;	- LCD'S ENABLE "E" CONNECTED TO CS2 LINE ON THE OUTPUT CONNECTOR. 
+;	- "CS2" LINE THROUGH-HOLE CONNECTED TO THROUGH-HOLE "B" (ADDR $B000=45056 --> 45056-65536=-20480 IN BASIC)
+;	- LCD'S "R/W" TO GND, POWER AND CONTRAST BY THE BOOK
+
+define ENABLE $B000
+LDA #$0		;set RS LOW(instruction mode)
+STA $0282	;load in LO-BYTE
+LDA #$3C 	;set 8 bit word mode
+STA $0283	;load in HI-BYTE
+JSR EXE		;execute command
+LDA #$0F 	;set display and char rom
+STA $0283	;load in HI-BYTE
+JSR EXE		;execute command
+LDA #$01 	;clear display
+STA $0283	;load in HI-BYTE
+JSR EXE		;execute command
+LDA #$06 	;set cursor movement and direction
+STA $0283	;load in HI-BYTE
+JSR EXE		;execute command
+LDA #$0		;set CS LOW (data mode)
+STA $0282	;load in LO-BYTE
+LDA #$00 	;zero HI-BYTE
+STA $0283	;load in HI-BYTE
+EXE:	JSR $0630
+	JSR PAUSE
+	LDA ENABLE
+	RTS
+PAUSE:  LDX #$00
+        LDY #$00
+LP:     INX
+        CPX #$FF
+        BNE LP
+        LDX #$00
+        INY
+        BNE LP
+        RTS
+
+HEXDUMP:
+650: A9 00 8D 82 02 A9 3C 8D 83 02 20 7F 06 A9 0F 8D 
+660: 83 02 20 7F 06 A9 01 8D 83 02 20 7F 06 A9 06 8D 
+670: 83 02 20 7F 06 A9 00 8D 82 02 A9 00 8D 83 02 20 
+680: 30 06 20 89 06 AD 00 B0 60 A2 00 A0 00 E8 E0 FF 
+690: D0 FB A2 00 C8 CC 84 02 D0 F3 60

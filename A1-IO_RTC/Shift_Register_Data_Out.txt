@@ -1,0 +1,26 @@
+;SHIFT REGISTER DATA OUT
+;	Requirements: PCB v0.94c, ATMEGA32 FW v0.94c
+;	VIA Base Address = $2000 (8192 DECIMAL)
+;	code starts at $0630
+;	save desired values in $0283 and $0282
+;	then run program with 0630R --> LEDs will light up accordingly
+;	RESET after run may be necessary only in WOZ Monitor. From BASIC: CALL 1584.
+
+define ACR $200B
+define SR $200A
+define HIBYTE $0283
+define LOBYTE $0282
+LDA #$0		
+STA ACR		;clear ACR
+LDA #$18
+STA ACR		;select SR out under control of phi2
+LDA HIBYTE	;load first byte ("higher byte")
+STA SR		;shift out data
+JSR DELRTS
+LDA LOBYTE	;load second byte ("lower byte")
+STA SR		;shift out data
+DELRTS: RTS	;done
+
+HEXDUMP:
+0630: a9 00 8d 0b 20 a9 18 8d 0b 20 ad 83 02 8d 0a 20 
+0640: 20 49 06 ad 82 02 8d 0a 20 60
