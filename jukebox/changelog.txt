@@ -13,7 +13,7 @@ Doc. Rev. III
 
 ------------------------------------------------------------------------------------------------------
 
-ENGLISH -- Documentation Changelog:
+ENGLISH -- Documentation's Changelog:
 
 Doc. Rev. I
 - Initial Release.
