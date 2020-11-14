@@ -1,0 +1,18 @@
+ITALIANO -- Variazioni nel ROM Pack:
+
+2020-09-10
+- Revisione iniziale
+
+2020-11-13
+- Aggiunto programma INTEGER BASIC "CLOCK" di Aleksandr Ermakov in pagina 6.
+
+-----------------------------------------------------------------------------
+
+ENGLISH -- ROM Pack Changelog:
+
+2020-09-10
+- Initial build
+
+2020-11-13
+- Added INTEGER BASIC "CLOCK" by Aleksandr Ermakov on page 6.
+
