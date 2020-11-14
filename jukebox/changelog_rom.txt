@@ -14,5 +14,5 @@ ENGLISH -- ROM Pack Changelog:
 - Initial build
 
 2020-11-13
-- Added INTEGER BASIC "CLOCK" by Aleksandr Ermakov on page 6.
+- Added INTEGER BASIC program "CLOCK" by Aleksandr Ermakov on page 6.
 
