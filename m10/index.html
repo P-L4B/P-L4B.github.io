@@ -1,0 +1,77 @@
+<title>OLIVETTI M10 WI-FI MODEM</title>
+<html><body>
+<code>
+<h2>OLIVETTI M10 WI-FI MODEM</h2>
+<br>
+<b>PROJECT DESCRIPTION</b><BR>
+This document summarizes the steps necessary to connect an ESP8266 based Wi-Fi modem to an Olivetti M10 (version without modem).<br>
+<br>
+<b>ALL IMAGE ARE STORED IN HIGH RESOLUTION. DOWNLOAD THEM FOR A BETTER VIEW.</b>
+<BR><BR>
+This operations require basic soldering skills and anti-ESD precautions.<BR>
+No responsibility is taken in case of damages or whastoever.<BR>
+<BR>
+<b>1)</b> Get and properly program an ESP8266 Wi-Fi modem as indicated here:<BR>
+<a href="https://1200baud.wordpress.com/2017/03/04/build-your-own-9600-baud-c64-wifi-modem-for-20/">https://1200baud.wordpress.com/2017/03/04/build-your-own-9600-baud-c64-wifi-modem-for-20/</a>
+<br><br>
+Modem Firmware is available under the General Public Licence GPLv3 and can also be found here:<br>
+<a href="https://github.com/RolandJuno/esp8266_modem">https://github.com/RolandJuno/esp8266_modem</a><br><br>
+<b>2)</b> Only four wires are necessary: +5V, GND, TXData and RXData. RTS and CTS signals of M10's RS232 port will be also connected together.<BR><br>
+<b>2.1)</b> Identify the signals and solder a small wire for each of them, as shown in the pictures:<br><br>
+YELLOW WIRE: Pin 11 of IC called M24 (not present) must be connected to ESP8266 RX pin<br>
+PURPLE WIRE: Throughole shown in the picture, close to IC called M33, must be connected to ESP8266 TX pin<br><br>
+<img src="1.jpg" width="403" height="226">
+<img src="2.jpg" width="403" height="226">
+<br><br><br>
+RED WIRE: 5V from modem connector (not present) pin 6 must be connected to ESP8266 Vin pin<br>
+BLACK WIRE: GND from modem connector (not present) pin 2 must be connected to ESP8266 GND pin<br><br>
+<img src="3.jpg" width="403" height="226">
+<br><br><br>
+<b>2.2)</b> Connect together pin 4 (RTS - Request to Send) and 5 (CTS - Clear to Send) of the RS232 connector<br><br>
+<img src="4.jpg" width="403" height="226">
+<br><br><br>
+<b>2.3)</b> Now solder the four wires to ESP8266 as shown here:<br><br>
+<img src="5.jpg" width="403" height="226">
+<br><br><br>
+<b>2.4)</b> Ensure that your work is like this overall view:<br><br>
+<img src="6.jpg" width="403" height="226">
+<br><br><br>
+<b>2.5) Properly insulate the Wi-Fi modem to prevent any short circuit with the M10 motherboard.</b><br>
+There is a plenty of space in the area shown in the pictures and there will be no difficulties to close the case.
+<br><br>
+<b>3)</b> Switch on the M10 and select the TELCOM program.<br>
+The default communication parameters 37I1E (300 baud, 7 data bits, Ignore parity, 1 stop bit, Line Status Enabled)<br>
+must be changed to <b>38N1D</b> (300 baud, 8 data bits, No parity, 1 stop bit, Line Status Disabled).<br><br>
+To do this:<br>
+- At the <b>Telcom:</b> prompt type: <b>stat 38N1D</b> then press ENTER. (Alternatively: press <b>F3</b> and the word <b>Stat</b> will be typed automatically.<br>
+- The <b>Telcom:</b> prompt will appear again. In case of errors a beep sound will be played.<br>
+<br>
+This setting is necessary only for the first time or as long as the internal battery keeps the settings.
+<br><br>
+Normally to connect with the modem it is enough to start the internal Terminal program by typing <b>term</b> followed by ENTER key, or by pressing the <b>F4</b> key.<br>
+<br>
+<img src="7.jpg" width="403" height="226">
+<br><br><br>
+Now press ENTER key once, the familiar boot message of the ESP modem will appear immediately:<br><br>
+<img src="8.jpg" width="403" height="226">
+<br><br><br>
+Remember to configure properly SSID and Password of your home Wi-Fi Network by using <b>AT$SSID</b> and <b>AT$PASS</b> commands.<br>
+Refer to the links above for the exhaustive list of commands.<br>
+Please refer also to M10 Operation Guide in order to get familiar with the features of the M10 Terminal (such as scroll up etc.)<br><br>
+After this you will be able to telnet in your favourite BBS or any other supported system!<br><br>
+<img src="10.jpg" width="403" height="226">
+<br><br><br>
+Please note:<br>
+- 300 baud speed in known to be the most reliable. Faster speed might also work under certain conditions (bursty transfers with little data).<br>
+- Due to localized M10's ROMs some characters like for example "~" (tilde), "@" (at), "#" (hash) might be displayed with other characters. This is not a malfunction.<br>
+- The extra power consumption of the Wi-Fi Modem is negligible. Usually four 2500 AA NiMh recheargeable batteries will last for an entire day, and even more.<br>
+- Your M10 is now in the 21st century, but remember that it is not Y2K compliant! :-)<br>
+<br>
+Enjoy!<br>
+
+<br><br>
+<hr><center>
+<img src="p.png">
+<h6>P-Lab 2020</h6></center>
+</html></body>
+
