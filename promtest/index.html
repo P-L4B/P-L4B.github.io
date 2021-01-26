@@ -1,0 +1,46 @@
+<title>APPLE-1 PROM TESTER</title>
+<html><body>
+<code>
+<h2>APPLE-1 PROM TESTER</h2>
+<br>
+<b>PROJECT DESCRIPTION</b><BR>
+A quick way to test all the PROMS of the APPLE-1 Computer.<br>
+<br>
+Each 256x4 PROM contains half a byte (one nibble).<br>
+The firmware automatically detects and tests the PROM by comparing each nibble with the original code stored in the Arduino's permanent FLASH.<br>
+Each PROM is tested individually. Both WOZ Monitor and Cassette Interface are supported.
+<BR><BR>
+<BR>
+No responsibility is taken in case of damages or whatsoever.<BR>
+<BR>
+<b>BILL OF MATERIALS</b><br>
+An Arduino Nano (or compatible), a breadboard and some wires.<br>
+<br>
+<b>RESOURCES</b><br>
+<a href="A1_prom_tester.ino">Source code [ino]</a><br>
+<a href="Gerber_PROM_tester.zip">Gerber file [zip]</a>
+<br><br>
+
+Schematic (download the image for full resolution)<br>
+<img src="Schematic_PROM_tester_2021-01-26.png" width="403" height="226">
+<img src="bb.jpg" width="403" height="226">
+
+
+<br><br><br>
+<b>USAGE</b><br>
+Disconnect every power source from Arduino.<br>
+Connect the PROM as shown in the wiring diagram (or make a PCB using the Gerber file), using all anti-ESD precautions.<br>
+Once connected to the power the test will begin immediately. Progress can be seen via terminal (default speed: 115200 baud, N81).<br>
+If the PROM is found healthy a "PASS" message will appear in few seconds along with the detected model (The built-in LED will flash in a heartbeat style).<br><br>
+<img src="pass.png" width="403" height="226"><br>
+<br><br>
+In case of failure during the reading an error message will appear (the built-in LED will be lit steadily):<br><br>
+<img src="fail.png" width="403" height="226">
+<img src="fail2.png" width="403" height="226"><br><br>
+Push RESET to test again. Always disconnect the power before removing the PROM. 
+<br><br><br><br>
+<hr><center>
+<img src="p.png">
+<h6>P-Lab 2021</h6></center>
+</html></body>
+
