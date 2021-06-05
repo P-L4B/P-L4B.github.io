@@ -13,6 +13,6 @@ Apple-1-Stepper Bill of materials:
 1x strip line 18x2 pins for connection PCB/Arduino
 1x strip line 8x1 pins for connection PCB/Arduino
 1x strip line 8x2 pins for keyboard connection
-1 x EDAC type edge female connector 2x22 pins, to solder, 3.96 mm pitch
+1x EDAC type edge female connector 2x22 pins, to solder, 3.96 mm pitch
 
 
