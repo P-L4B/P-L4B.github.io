@@ -1,0 +1,18 @@
+Apple-1-Stepper Bill of materials:
+
+1x PCB
+1x Arduino Mega 2560 or compatible
+1x LCD keypad shield
+4x 74HC374 (Octal Edge-Triggered D-Type Flip Flops with 3-state outputs)
+1x 74LS74 (Dual JK Flip-Flop with Clear)
+1x 74HC4066 (Quad Bilateral switches)
+6x 100 nF filter capacitors
+1x 220 ohm 1/4W resistor
+2x strip line (long) male/female - 6x1 pins for passthrough connection LCD/PCB/Arduino
+2x strip line (long) male/female - 8x1 pins for passthrough connection LCD/PCB/Arduino
+1x strip line 18x2 pins for connection PCB/Arduino
+1x strip line 8x1 pins for connection PCB/Arduino
+1x strip line 8x2 pins for keyboard connection
+1 x EDAC type edge female connector 2x22 pins, to solder, 3.96 mm pitch
+
+
