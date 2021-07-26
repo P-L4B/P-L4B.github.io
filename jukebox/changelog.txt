@@ -1,19 +1,4 @@
-ITALIANO -- Variazioni nella documentazione:
-
-Doc. Rev. I
-- Revisione iniziale
-
-Doc. Rev. II
-- Aggiunta EEPROM 27c020 nella lista dei dispositivi di memoria di default.
-- Aggiunta nota all'immagine del prodotto.
-- Aggiunto indirizzo email in forma piu' chiara.
-
-Doc. Rev. III
-- Aggiunta la nota: "...equipaggiato con 8 kBytes di RAM..." nei requisiti per l'uso del dispositivo.
-
-------------------------------------------------------------------------------------------------------
-
-ENGLISH -- Documentation's Changelog:
+Documentation Changelog:
 
 Doc. Rev. I
 - Initial Release.
@@ -26,4 +11,25 @@ Doc. Rev. II
 Doc. Rev. III
 - Added the words "...equipped with 8 kBytes of RAM..." in the requirements for the use of the device.
 
+Doc. Rev. IV
+- Added Flash 39sf020 among the supported devices
+- Product picture updated
 
+-------------------------------------------------------------------------------------------
+
+Variazioni nella documentazione:
+
+Doc. Rev. I
+- Revisione iniziale
+
+Doc. Rev. II
+- Aggiunta EEPROM 27c020 nella lista dei dispositivi di memoria di default.
+- Aggiunta nota all'immagine del prodotto.
+- Aggiunto indirizzo email in forma piu' chiara.
+
+Doc. Rev. III
+- Aggiunta la nota: "...equipaggiato con 8 kBytes di RAM..." nei requisiti per l'uso del dispositivo.
+
+Doc. Rev. IV
+- Aggiunta Flash 39sf040 tra i dispositivi compatibili
+- Aggiornata immagine del prodotto

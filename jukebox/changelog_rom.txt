@@ -1,18 +1,37 @@
-ITALIANO -- Variazioni nel ROM Pack:
+-------------------------------------------------------------------------------------
+ROM-PACK CHANGELOG                                                   ITALIANO|ENGLISH
+-------------------------------------------------------------------------------------
+
+ITALIANO
 
 2020-09-10
 - Revisione iniziale
 
 2020-11-13
-- Aggiunto programma INTEGER BASIC "CLOCK" di Aleksandr Ermakov in pagina 6.
+- Aggiunto programma INTEGER BASIC "CLOCK" di Aleksandr Ermakov in Pagina 6 [CLOCK]
 
------------------------------------------------------------------------------
+2021-07-25
+- Aggiunto "6502 Memory Test" di Mike Willegal in Pagina 6 [RAMTEST] (vedi PDF)
+- Aggiunto programma di RAM test/challenge di Uncle Bernie in Pagina 7 [RAMCHALL]
+  info: https://www.applefritter.com/content/experimental-dram-challenge-program
+- Aggiunto gioco "Codebreaker" di Uncle Bernie in Pagina 7 [CODEBR] (vedi Codebr.PDF)
+  info: https://www.applefritter.com/content/uncle-bernies-codebreaker-game-apple-1
 
-ENGLISH -- ROM Pack Changelog:
+-------------------------------------------------------------------------------------
+
+ENGLISH
 
 2020-09-10
 - Initial build
 
 2020-11-13
-- Added INTEGER BASIC program "CLOCK" by Aleksandr Ermakov on page 6.
+- Added INTEGER BASIC program "CLOCK" by Aleksandr Ermakov on page 6 [CLOCK]
 
+2021-07-25
+- Added "6502 Memory Test" by Mike Willegal to ROM Page 6 [RAMTEST] (see PDF)
+- Added RAM test/challenge program by Uncle Bernie on Page 7 [RAMCHALL]
+  info: https://www.applefritter.com/content/experimental-dram-challenge-program
+- Added Uncle Bernie's game Codebreaker on Page 7 [CODEBR] (see Codebr.pdf)
+  info: https://www.applefritter.com/content/uncle-bernies-codebreaker-game-apple-1
+
+-------------------------------------------------------------------------------------
