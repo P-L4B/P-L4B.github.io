@@ -1,0 +1,59 @@
+<title>CODEBREAKER LOADING INSTRUCTIONS</title>
+<html><body>
+<code>
+<h2>CODEBREAKER LOADING FROM AUDIO FILE</h2>
+<br>
+For standard ACIs:
+<br>
+You  would start the ACI with C100R at Wozmon command prompt to get the ACI command prompt (a '*').
+<br>
+Then give the ACI command  <b>07F8.0FFFR</b> to read the AIFF file. UNPAUSE the player simultaneously with pressing <i>RETURN</i> to invoke the command.
+<br>
+If it does not hang you are back to Wozmon and ready to give the <b>800R</b> <i>RETURN</i> start command.
+<br>
+<br>
+Not extactly user friendly (you have to memorize and type all the addresses) and there is no checksum whatsoever to detect loading errors.
+<br>
+The standard procedure for Apple-1 ACI is to look if the last two bytes of the cassette load are correct using the Wozmon (even more work !):
+<br>
+<b>FFE.FFF</b> <i>RETURN</i>
+<br>
+and for 'Codebreaker' it should spit out the two byte values 7F and 60. Otherwise you have a loading error or the old, buggy version.
+<br>
+So you have to memorize a lot of bytes.
+<br>
+<br>
+<br>
+<br>
+For Extendes ACI ROMs:<br>
+With the 'extended format' page in my ACI PROMs you start  it with <b>C500R</b> <i>RETURN</i>at Wozmon command prompt to get the ACI command prompt. (Note the different address).
+<br>
+Then, since it is a two block recording, you give the command:<br>
+<b>RX RX</b> <i>RETURN</i>, where each 'RX' means 'read one extended format block'.
+<br>
+Again, UNPAUSE the recording when hitting <i>RETURN</i>.
+<br>
+And the game will load, the checksum will be checked, and if it is OK, it will automatically start.
+<br>
+Much, much more user friendly ! All you need to memorize / write down is the number of blocks. That's it !
+<br>	
+<br><br>
+<br>
+On the Apple-II, use:
+<br>
+<b>CALL -151</b> <i>RETURN</i>
+<br>
+<b>7F8.FFFR</b>  <i>RETURN</i>
+<br>
+<b>800G</b> <i>RETURN</i>
+<br>
+<br><br><br>
+<a href="index.html"><b>Back to main page</b></a>
+<br>
+<br>
+<br>
+<hr><center>
+<img src="p.png">
+<h6><center>P-Lab 2020-21</h6>
+</html></body>
+
