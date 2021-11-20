@@ -17,6 +17,9 @@ ITALIANO
 - Aggiunto gioco "Codebreaker" di Uncle Bernie in Pagina 7 [CODEBR] (vedi Codebr.PDF)
   info: https://www.applefritter.com/content/uncle-bernies-codebreaker-game-apple-1
 
+2021-11-20
+- Aggiornato gioco "Codebreaker" su richiesta dell'autore, per correzione bug
+
 -------------------------------------------------------------------------------------
 
 ENGLISH
@@ -33,5 +36,8 @@ ENGLISH
   info: https://www.applefritter.com/content/experimental-dram-challenge-program
 - Added Uncle Bernie's game Codebreaker on Page 7 [CODEBR] (see Codebr.pdf)
   info: https://www.applefritter.com/content/uncle-bernies-codebreaker-game-apple-1
+
+2021-11-20
+- Updated game "Codebreaker" upon Author's request, for bug fix
 
 -------------------------------------------------------------------------------------
