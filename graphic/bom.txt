@@ -1,0 +1,36 @@
+BILL OF MATERIALS AND COMPONENT PLACING:
+----------------------------------------
+
+APPLE-1 GRAPHIC CARD (PCB ver. 0.4)
+
+1x IC Texas Instruments TMS9918A [VDC1]
+2x IC 74HCT00 (quad 2-input NAND gates) [U1, U2]
+1x IC 74HCT138 (3-to-8 line decoder/demultiplexer, inverting outputs) [U13]
+1x IC 74HCT04 (hex inverter gate) [U3]
+3x IC 74HCT574 (octal D-type edge-triggered flip-flops) [U4. U5, U6]
+1x IC 62256-70 (SRAM 32k x 8 bit, 70 ns) [U7]
+11x 100 nF decoupling capacitors [C1, C2, C3, C4, C6, C7, C8, C9, C10, C12, C15]
+2x 220 uF 16V electrolytic capacitor [C11, C14]
+2x RCA connectors, for PCB placing
+2x 75 ohm, 5%, 1/4W resistors [see PCB]
+1x 470 ohm, 5%, 1/4W resistor [see PCB]
+1x 2n2222A transistor [Q1]
+1x quartz crystal 10.738635 MHz [Y1]
+1x 22 pF ceramic capacitor (or different value, according to crystal datasheet) [C5]
+1x trimmer capacitor 12-40 pF [C13]
+1x connector header, male, 2.54mm pitch, 2x22 pins
+1x APPLE-1 GRAPHIC CARD PCB ver. 0.4 (see Gerber file)
+
+
+APPLE-1 GRAPHIC CARD CODETANK (PCB ver. 0.4)
+
+1x IC 28c256-15 (EEPROM 32k x 8 bit) [U2]
+1x 74LS156 (dual 2-to-4 line decoder/demux, inverting outputs, open collector) [U1]
+2x 100 nF decoupling capacitors [C1, C2]
+1x 470 ohm, 5%, 1/4W resistor [see PCB]
+1x jumper, 3 pin, 2.54mm pitch [see PCB]
+1x connector header, female, 2.54mm pitch, 2x22 pins
+1x APPLE-1 GRAPHIC CARD CODETANK PCB ver. 0.4 (see Gerber file)
+
+
+
