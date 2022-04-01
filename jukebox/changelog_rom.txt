@@ -20,6 +20,11 @@ ITALIANO
 2021-11-20
 - Aggiornato gioco "Codebreaker" su richiesta dell'autore, per correzione bug
 
+2022-04-01
+- Aggiunti giochi "2048" e "PUZZLE15" e ASCII demo "CAT" di Denis Paryshev
+  info: https://github.com/DenisParyshev/
+- riorganizzate pagine P6 e P7 per ospitare i nuovi programmi aggiunti
+
 -------------------------------------------------------------------------------------
 
 ENGLISH
@@ -39,5 +44,10 @@ ENGLISH
 
 2021-11-20
 - Updated game "Codebreaker" upon Author's request, for bug fix
+
+2022-04-01
+- Added [2048] and [PUZZLE15] game, and ASCII demo [CAT] by Denis Paryshev
+  info: https://github.com/DenisParyshev/
+- reorganized pages P6 e P7 to host newly added programs
 
 -------------------------------------------------------------------------------------
