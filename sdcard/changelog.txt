@@ -1,0 +1,17 @@
+SD CARD OS Changelog:
+
+Version 1.0
+- Internal release for testing only
+
+Version 1.1
+- Initial release
+
+----------------------------------------
+
+Registro modifiche SD CARD OS:
+
+Version 1.0
+- Versione di test ad uso interno 
+
+Version 1.1
+- Versione iniziale
