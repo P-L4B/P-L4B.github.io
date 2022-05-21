@@ -21,22 +21,32 @@ Pictures of the prototype:<br><br>
 Orientation (white dots, indicating PROM pin 1, on production PCB and white dots on the motherboard must coincide):<br><br>
 <img src="4.jpg" width="403" height="226">
 <br><br><br>
-Schematic (Download image for a better view) and rendering. Contact strip will be soldered on the top side.<br><br>
-<img src="Schematic_A1_PROM.png" width="468" height="330">
-<img src="PCB_2D.png" width="250" height="325">
-<img src="PCB_3D.png" width="275" height="320">
-<br><br><br>
-Files:<br>
+<b>Version 1.0 - Single bank</b><br>
 <a href="Gerber_A1_PROM.zip">Gerber File [zip]</a><br>
 <a href="wozmon.bin">WOZ Monitor in a 8192 bytes file suitable for EPROM 27c64 / EEPROM 28c64 (250 ns access time or better) [bin]</a><br>
 <br><br>
-<b>Version 1.1 with bank switching (bin file above maps as BANK 0)</b><br>
+<b>Version 1.1 - Dual bank - USE EEPROM 27c128 for bank switching (bin file above maps as BANK 0)</b><br>
 <a href="Schematic_A1_PROM_v1.1.png"> Schematic [png]</a><br>
 <a href="Gerber_A1_PROM_v1.1.zip">Gerber File [zip]</a><br>
 <a href="A1_PROM_schematic_v1.1.json">Schematic in EasyEDA format [json]</a><br>
 <a href="A1_PROM_PCB_v1.1.json">PCB in EasyEDA format [json]</a><br>
-Note: BANK 1 must be burned in EPROM from its absolute address $1000.<br>
+Note: BANK 1 must be burned in EPROM from absolute address $2000.<br>
+<br><br>
+<b>Version 1.2 - Quad bank - USE EEPROM 27c64 for Dual bank or 27c128 for Quad bank switching (bin file above maps as A12=0, A13=0)</b><br>
+<a href="Schematic_A1_PROM_64_128.png"> Schematic [png]</a><br>
+<a href="Gerber_A1_PROM_PCB_64_128.zip">Gerber File [zip]</a><br>
+<a href="A1_PROM_schematic_64_128.json">Schematic in EasyEDA format [json]</a><br>
+<a href="A1_PROM_64_128_project.zip">Project in EasyEDA format [zip]</a><br><br>
+Please refer to the following address map:<br>
+<img src="Addr.png">
+
 <br><br><br>
+Schematic (Download image for a better view) and rendering. Contact strip must be soldered on the top side.<br><br>
+<img src="Schematic_A1_PROM_64_128.png" width="468" height="330">
+<img src="PCB.png" width="278" height="330">
+<img src="3d.png" width="248" height="330">
+<br><br><br>
+
 <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
 <br>
 <hr><center>
