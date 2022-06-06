@@ -6,12 +6,28 @@ Version 1.0
 Version 1.1
 - Initial release
 
-----------------------------------------
+Version 1.2
+- Fixed EXIT command
+- VIA auto re-init after a timeout
+- 64 chars namefile now supported
+- improved bus handling between VIA and microcontroller
+- Recompiled Applesoft for SD CARD OS v1.2 [APPLESOFT-SD12]
+  (APPLESOFT-SD11 for SD CARD OS v1.1 users has been left on to SD)
+
+-------------------------------------------------------------------
 
 Registro modifiche SD CARD OS:
 
-Version 1.0
+Versione 1.0
 - Versione di test ad uso interno 
 
-Version 1.1
+Versione 1.1
 - Versione iniziale
+
+Versione 1.2
+- Risolto bug su comando EXIT
+- Auto reininizializzazione del VIA dopo un timeout
+- Supporto nomi files da 64 caratteri 
+- Miglioramento nella comunicazione tra VIA e microcontrollore
+- Ricompilato Applesoft per SD CARD OS v1.2 [APPLESOFT-SD12]
+  (mantenuta su SD la versione APPLESOFT-SD11 per SD CARD OS v1.1)
