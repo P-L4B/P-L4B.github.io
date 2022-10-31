@@ -239,7 +239,7 @@ void outChar() {
   }
 
 
-  if (keyDown[keyPos] >= 0 && keyDown[keyPos] <= 127) {
+  if (keyDown[keyPos] > 0 && keyDown[keyPos] <= 127) {
     //if (keyDown[keyPos] != 0 ) {
 
 
@@ -253,8 +253,8 @@ void outChar() {
       keyDown[keyPos] = keyDown[keyPos] - 32;
     }
 
-    Serial.print(char(keyDown[keyPos]));
-    //Serial.println(keyDown[keyPos]);
+    //Serial.print(char(keyDown[keyPos]));
+    Serial.println(keyDown[keyPos]);
 
     /*pinMode(9, OUTPUT);
       pinMode(8, OUTPUT);
