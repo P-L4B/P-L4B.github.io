@@ -1,0 +1,24 @@
++-----------------------------------+
+!  APPLEDORE KEYBOARD ADAPTER v1.1  !
++-----------------------------------+
+
+
+BILL OF MATERIALS:
+
+ADAPTER
+- 1x Arduino Nano
+- 2x Contact strip for Arduino Nano, 1x15 pin, 2.54mm pitch
+- 1x 74LS374 or 74HC374 or 74HCT374
+- 1x DIP 20 socket
+- 2x DIP 16 socket [Apple-1 and Apple II/II+ connector]
+- 1x Header connector 2x8 pin, 2.54mm pitch [Generic TTL connector]
+- 1x Header connector 1x20 pin, 2.54mm pitch
+- 1x Resistor 1 kohm 1/4W
+- 1x 2N2222 Transistor or equivalent
+- 1x PCB (or prototyping PCB)
+- 2x pushbuttons (optional)
+- 2x header connector 2x1, 2.54mm pitch (optional, external pusubuttons)
+
+RIBBON CABLE for Apple-1/II/II+
+- 1x 16 wires flat ribbon cable (max length 50cm)
+- 2x IDC connectors for such flat cable
