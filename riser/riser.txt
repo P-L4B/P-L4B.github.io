@@ -38,6 +38,10 @@ letters (A-Z-1-22).
 Now insert the Riser into the Apple-1's Expansion connector 
 again observing the guide numbers and letters (A-Z-1-22).
 
+Depending on the connectors used, the horizontal board may 
+remain slightly tilted. In this case it is recommended to 
+support it with pieces of insulating material about 30-31mm high.
+
 BILL OF MATERIALS:
 1x PCB as per the attached Gerber file
 1x connector 2x22pin -3.96mm contact spacing- like EDAC 305-044-520-202
