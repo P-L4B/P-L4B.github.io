@@ -17,6 +17,9 @@ The PCB also includes some of the "reliability modifications"
 suggested by UncleBernie, such as the addition of 6 x 390 Ohm
 1/8W Resistors to terminate RAM's Address Lines.
 
+Reference:
+https://www.applefritter.com/content/part-path-towards-rock-solid-apple-1-builds
+
 These modifications are optional: put them in place only if 
 you notice RAM malfunctions or errors.
 Due to the design of the computer itself, despite the 
