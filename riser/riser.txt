@@ -1,0 +1,49 @@
++---------------------+
+| APPLE-1 RISER BOARD |
++---------------------+
+
+Apple-1 Riser Board allows you to place the expansion board 
+horizontally so it does not interfere with your case.
+
+It is designed not to exceed the height footprint of the ACI, 
+while still maintaining enough room for thicker cards, such 
+as microSD Storage and Wi-Fi Modem.
+
+The components underneath the expansion boards (the on-board 
+RAM) have negligible thermal dissipation, so no overheating 
+problems will arise.
+
+The PCB also includes some of the "reliability modifications" 
+suggested by UncleBernie, such as the addition of 6 x 390 Ohm
+1/8W Resistors to terminate RAM's Address Lines.
+
+These modifications are optional: put them in place only if 
+you notice RAM malfunctions or errors.
+Due to the design of the computer itself, despite the 
+optional reliability mods, inconveniences might still occur.
+
+Your Apple computer and its peripherals are sensitive to static
+electricity and may be damaged by it.
+Before any operation on your devices, you must discharge the 
+static electricity accumulated by your body and prevent it from 
+building up again.
+We do not accept any responsibility for damage, even serious 
+or fatal, caused to people / things / intellectual property 
+during the installation or use of this device.
+
+Solder the components on the Solder Side indicated and clean 
+the PCB of any residue. Then insert your expansion board into 
+the Riser verifying its orientation by the guide numbers and 
+letters (A-Z-1-22).
+Now insert the Riser into the Apple-1's Expansion connector 
+again observing the guide numbers and letters (A-Z-1-22).
+
+BILL OF MATERIALS:
+1x PCB as per the attached Gerber file
+1x connector 2x22pin -3.96mm contact spacing- like EDAC 305-044-520-202
+6x 390 Ohm 1/8W resistors [optional]
+1x 100 nF capacitor [optional]
+
+*This project is submitted as-is and not guaranteed*
+
+
