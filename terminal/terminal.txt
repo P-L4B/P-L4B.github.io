@@ -1,0 +1,25 @@
++-------------------------------------+
+!  APPLE-1 FAST SERIAL TERMINAL v1.0  !
++-------------------------------------+
+
+
+BILL OF MATERIALS:
+
+TERMINAL BOARD
+- 1x Arduino Nano
+- 2x Contact strip for Arduino Nano, 1x15 pin, 2.54 mm pitch
+- 1x 74HC374 or 74HCT374
+- 2x 74HC138 or 74HCT138
+- 1x DIP 20 socket
+- 4x DIP 16 socket [two for Apple-1 and Replica-1+ keyboard connector]
+- 3x 100 nF capacitors
+- 2x Pushbutton
+- 1x PCB (or prototyping PCB)
+- 1x EDAC connector 346-100-541-202 2x22 pins, 3.96 mm pitch
+
+
+
+RIBBON CABLE
+- 1x 16 wires flat ribbon cable (max length 50cm)
+- 2x IDC connectors for such flat cable
+
