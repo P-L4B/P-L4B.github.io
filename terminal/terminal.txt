@@ -1,5 +1,5 @@
 +-------------------------------------+
-!  APPLE-1 FAST SERIAL TERMINAL v1.0  !
+!  APPLE-1 FAST SERIAL TERMINAL v1.01 !
 +-------------------------------------+
 
 

@@ -1,0 +1,12 @@
++------------------------------------------+
+!      APPLE-1 FAST SERIAL TERMINAL        !
++------------------------------------------+
+
+PCB/schematic CHANGELOG
+
+- 1.0:  initial version
+- 1.01: added connection between '374 pin 19 
+        and Arduino pin A6 to handle 8th bit
+
+--------------------------------------------
+
