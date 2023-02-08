@@ -2,7 +2,7 @@
 #Send file to device character by character. Optimized for Apple-1
 #Change device file if necessary
 DEVICE="/dev/ttyUSB0"
-stty -F $DEVICE 9600 cs8 -cstopb -parenb
+stty -F $DEVICE 230400 cs8 -cstopb -parenb
 INPUT=$1
 while IFS= read -r -n1 char
 	do
