@@ -1,0 +1,13 @@
++-----------------------------------------------------+
+!           APPLE-1 FAST SERIAL TERMINAL              !
++-----------------------------------------------------+
+
+Arduino Source code CHANGELOG
+
+- 1.0:   initial version
+- 1.01:  added handling og 8th bit
+- 1.01a: toggle of 8th bit handling remapped to CTRL-T
+	 instead of BACK or SHIFT-BACK
+
+-------------------------------------------------------
+
