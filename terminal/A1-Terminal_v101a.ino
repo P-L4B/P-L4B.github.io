@@ -2,7 +2,7 @@
 
   APPLE-1 TERMINAL
   by Claudio Parmigiani - P-LAB
-  Version 1.02
+  Version 1.01a
 
 */
 
