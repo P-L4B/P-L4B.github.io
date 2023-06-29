@@ -1,8 +1,7 @@
 // C64 keyboard to Apple-1 TTL/ASCII adapter
 // by Claudio Parmigiani - P-LAB
-// 
 // Based on the following projects:
-//
+
 // C64 USB Keyboard mod
 // Original by Pyofer
 // See original thread @
@@ -88,6 +87,9 @@ void setup() {
 
   for (i = 0; i < 64; i++) keyDown[i] = 0; // Set all keys as up
 
+  pinMode(13, OUTPUT);
+  Strobe();
+
   pinMode(2, OUTPUT); // configure inputs and outputs
   pinMode(3, OUTPUT);
   pinMode(4, OUTPUT);
@@ -128,7 +130,7 @@ void setup() {
 void loop() // main keyboard scanning loop
 {
 
-  //serial read
+  //serial read 
   if (Serial.available() > 0) {
     // read the incoming byte:
     int incomingByte = Serial.read();
@@ -152,46 +154,14 @@ void loop() // main keyboard scanning loop
     // digitalWrite(outPin,LOW); // set it as low, a pressed key will be pulled to ground
     // Changed order to match real c64 keyboard matrix layout.
 
-    if (outPin == 2) {
-      pinMode (9, OUTPUT);
-      digitalWrite(9, LOW);
-      outPinSet = 9;
-    }
-    if (outPin == 3) {
-      pinMode (3, OUTPUT);
-      digitalWrite(3, LOW);
-      outPinSet = 3;
-    }
-    if (outPin == 4) {
-      pinMode (4, OUTPUT);
-      digitalWrite(4, LOW);
-      outPinSet = 4;
-    }
-    if (outPin == 5) {
-      pinMode (5, OUTPUT);
-      digitalWrite(5, LOW);
-      outPinSet = 5;
-    }
-    if (outPin == 6) {
-      pinMode (6, OUTPUT);
-      digitalWrite(6, LOW);
-      outPinSet = 6;
-    }
-    if (outPin == 7) {
-      pinMode (7, OUTPUT);
-      digitalWrite(7, LOW);
-      outPinSet = 7;
-    }
-    if (outPin == 8) {
-      pinMode (8, OUTPUT);
-      digitalWrite(8, LOW);
-      outPinSet = 8;
-    }
-    if (outPin == 9) {
-      pinMode (2, OUTPUT);
-      digitalWrite(2, LOW);
-      outPinSet = 2;
-    }
+    if (outPin == 2) pinMode (9, OUTPUT); digitalWrite(9, LOW); outPinSet = 9;
+    if (outPin == 3) pinMode (3, OUTPUT); digitalWrite(3, LOW); outPinSet = 3;
+    if (outPin == 4) pinMode (4, OUTPUT); digitalWrite(4, LOW); outPinSet = 4;
+    if (outPin == 5) pinMode (5, OUTPUT); digitalWrite(5, LOW); outPinSet = 5;
+    if (outPin == 6) pinMode (6, OUTPUT); digitalWrite(6, LOW); outPinSet = 6;
+    if (outPin == 7) pinMode (7, OUTPUT); digitalWrite(7, LOW); outPinSet = 7;
+    if (outPin == 8) pinMode (8, OUTPUT); digitalWrite(8, LOW); outPinSet = 8;
+    if (outPin == 9) pinMode (2, OUTPUT); digitalWrite(2, LOW); outPinSet = 2;
 
 
     for (i = 0; i < 9; i++) // scan through columns
@@ -220,7 +190,7 @@ void loop() // main keyboard scanning loop
           if ((keyPos != 16 && keyPos != 58) || windowsShift == 1 ) // is it not-shift or in windows mode?
           { // if so pass the key through
             lastDebounceTime[keyPos] = millis(); // reset the debounce delay
-            //Serial.println(char(keyDown[keyPos]));    // out to serial port for debug
+            //Serial.println(char(keyDown[keyPos]));    // pass the keypress to windows
             outChar();
           }
           else {
@@ -249,7 +219,7 @@ void loop() // main keyboard scanning loop
 }
 
 void outChar() {
-
+ 
   //CLRSCR
   if ((keyDown[keyPos]) == -46)
   {
@@ -277,7 +247,7 @@ void outChar() {
     keyDown[keyPos] = 94;
   }
 
-  if (keyDown[keyPos] > 0 && keyDown[keyPos] <= 127) {
+  if (keyDown[keyPos] >= 0 && keyDown[keyPos] <= 127) {
     //if (keyDown[keyPos] != 0 ) {
 
 
@@ -315,10 +285,7 @@ void outChar() {
     delayMicroseconds(100);
 
     //STROBE OUT
-    pinMode(13, OUTPUT);
-    digitalWrite(13, HIGH);
-    delayMicroseconds(100);
-    digitalWrite(13, LOW);
+    Strobe();
 
     //resetting lines
     pinMode(9, INPUT_PULLUP);
@@ -330,4 +297,10 @@ void outChar() {
     pinMode(3, INPUT_PULLUP);
     pinMode(2, INPUT_PULLUP);
   }
+}
+
+void Strobe(){
+    digitalWrite(13, HIGH);
+    delayMicroseconds(100);
+    digitalWrite(13, LOW);
 }

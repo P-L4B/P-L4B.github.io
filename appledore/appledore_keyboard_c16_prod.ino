@@ -72,6 +72,9 @@ void setup() {
 
   for (i = 0; i < 64; i++) keyDown[i] = 0; // Set all keys as up
 
+  pinMode(13, OUTPUT);
+  Strobe();
+
   pinMode(2, OUTPUT); // configure inputs and outputs
   pinMode(3, OUTPUT);
   pinMode(4, OUTPUT);
@@ -317,10 +320,7 @@ void outChar() {
     delayMicroseconds(100);
 
     //STROBE OUT
-    pinMode(13, OUTPUT);
-    digitalWrite(13, HIGH);
-    delayMicroseconds(100);
-    digitalWrite(13, LOW);
+    Strobe();
 
     //resetting lines
     pinMode(9, INPUT_PULLUP);
@@ -333,3 +333,11 @@ void outChar() {
     pinMode(2, INPUT_PULLUP);
   }
 }
+
+void Strobe(){
+    digitalWrite(13, HIGH);
+    delayMicroseconds(100);
+    digitalWrite(13, LOW);
+}
+
+
