@@ -1,0 +1,60 @@
++-----------------------------+
+| MINITEL ADF-258 WI-FI MODEM |
++-----------------------------+
+
+
+REFERENCE PROJECTS
+------------------
+https://github.com/iodeo/Minitel-ESP32/
+http://retrocomputing.c3po.it/Retronomicon/html/alcatel.htm
+
+
+PROJECT DESCRIPTION
+-------------------
+This ADF-258 WI-FI MODEM is functionally identical to the reference one. 
+However, it uses through-hole components and allows the separation of the ESP32 microcontroller, so that it can be used for other projects.
+
+
+DISCLAIMER
+----------
+The electronic components used are sensitive to static electricity and may be damaged by it. 
+Before any operation on your devices, you must discharge the static electricity accumulated by your body and prevent it from building up again. 
+We do not accept any responsibility for damage, even serious or fatal, caused to people / things / intellectual property during the installation or use of this device.
+MINITEL ADF-258 also, use LETHAL voltages that can be present even when it's switched off and disconnected from mains. 
+NEVER open or tamper with it, for any reason. Again, we take no responsibility for any damage, even lethal, to people, property, intellectual property.
+
+
+FIRMWARE
+--------
+Firmware is freely downloadable from the link below, follow the instructions and program your ESP-WROOM-32:
+https://github.com/sblendorio/Minitel-ESP32
+
+
+ASSEMBLY
+--------
+Solder all the components indicated in the Bill of Materials, the value of the component is printed on to the PCB itself.
+ESP32 Dev Board comes with it own 3.3 V internal Voltage Regulator.
+It's possible to configure the board to use the Dev Board's internal regulator or the external LD1117V33 (LD33CV).
+The choice of the regulator is made by selecting the proper "POWER" jumper settings.
+*** The use of the internal regulator can cause overheating, depending on the voltage on the ADF-258 DIN connector.
+*** If you are not completely confident, select LD1117.
+
+Modem can be powered in different ways:
+1) Directly from ADF-258
+2) From Dev Board USB connector
+
+Option 1) may not be available on your model. To find out, just gently connect your Wi-Fi modem to ADF-258's DIN plug and switch on the Minitel.
+If modem LED's lights up you're good to go. 
+If it stays off you need to power the Modem from the USB connector (Option 2). Use any USB adapter that can supply at least 1000 mA.
+
+To enter the terminal mode:
+- Switch on the ADF-258
+- Power on the Modem board, if not already powered on by the Minitel itself
+- Set the Teletel operating mode with the keys combination FUNZ+T
+- Set the Terminal speed with the keys combination FUNZ+4
+- Finally, enter the Terminal Mode with the keys combination FUNZ+AGENDA
+
+The modem configuration page should appea appear within a couple of seconds.
+From here on, follow the easy on-screen instructions and enjoy!
+
+
