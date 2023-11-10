@@ -1,0 +1,22 @@
++-----------------------------------------------------+
+!     IEC INTERFACE for microSD Storage Card v1.0     !
++-----------------------------------------------------+
+
+
+BILL OF MATERIALS:
+
+INTERFACE
+- 1x DIP socket 14 pin
+- 1x 7406
+- 6x BAT85 Schottky Diodes or equivalent
+- 1x Tactile pushbutton 6x6mm (holes 6.5mm x 4.5mm)
+- 3x Resistor 1 kohm 1/4W
+- 1x DIN connector, female, 6 poles (45322)
+- 1x Header connector 1x12 pin, 2.54mm pitch
+- 1x Capacitor 100 nF
+- 1x PCB (or prototyping PCB)
+
+FOR THE microSD Storage Card (if not already provided)
+- 1x Strip line connector 1x12 pin, female, 2.54mm pitch
+
+

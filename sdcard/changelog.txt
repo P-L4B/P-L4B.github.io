@@ -1,33 +1,48 @@
 SD CARD OS Changelog:
 
 Version 1.0
-- Internal release for testing only
+- Internal release for testing only.
 
 Version 1.1
-- Initial release
+- Initial release.
 
 Version 1.2
-- Fixed EXIT command
-- VIA auto re-init after a timeout
-- 64 chars namefile now supported
-- improved bus handling between VIA and microcontroller
-- Recompiled Applesoft for SD CARD OS v1.2 [APPLESOFT-SD12]
-  (APPLESOFT-SD11 for SD CARD OS v1.1 users has been left on to SD)
+- Fixed EXIT command.
+- VIA auto re-init after a timeout.
+- 64 chars namefile now supported.
+- improved bus handling between VIA and microcontroller.
+- Recompiled Applesoft for SD CARD OS v1.2 [APPLESOFT-SD12].
+  (APPLESOFT-SD11 for SD CARD OS v1.1 users have been left on to SD).
+
+Version 1.3
+- Added IEC Disk Drive support & dedicated commands.
+- Microntroller: added pattern support for directory browsing.
+  Retro-compatible with version 1.2, upgrade is not mandatory.
+- Recompiled Applesoft for SD CARD OS v1.3 [APPLESOFT-SD13].
+  (APPLESOFT-SDxx for previous version have been left on to SD).
 
 -------------------------------------------------------------------
 
 Registro modifiche SD CARD OS:
 
 Versione 1.0
-- Versione di test ad uso interno 
+- Versione di test ad uso interno.
 
 Versione 1.1
-- Versione iniziale
+- Versione iniziale.
 
 Versione 1.2
-- Risolto bug su comando EXIT
-- Auto reininizializzazione del VIA dopo un timeout
-- Supporto nomi files da 64 caratteri 
-- Miglioramento nella comunicazione tra VIA e microcontrollore
-- Ricompilato Applesoft per SD CARD OS v1.2 [APPLESOFT-SD12]
-  (mantenuta su SD la versione APPLESOFT-SD11 per SD CARD OS v1.1)
+- Risolto bug su comando EXIT.
+- Auto reininizializzazione del VIA dopo un timeout.
+- Supporto nomi files da 64 caratteri.
+- Miglioramento nella comunicazione tra VIA e microcontrollore.
+- Ricompilato Applesoft per SD CARD OS v1.2 [APPLESOFT-SD12].
+  (Mantenuta su SD la versione APPLESOFT-SD11 per SD CARD OS v1.1).
+
+Versione 1.3
+- Aggiunto supporto a Disk Drive IEC, con comandi dedicati.
+- Microcontrollore: aggiunta feature per pattern su comando DIR (SD).
+  Retrocompatibile con versione 1.2. Upgrade non obbligatorio.
+- Ricompilato Applesoft per SD CARD OS v1.3 [APPLESOFT-SD13].
+  (Le versioni per precedenti OS sono state mantenute sulla SD card).
+
