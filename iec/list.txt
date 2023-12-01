@@ -1,19 +1,30 @@
----------------- --------------------------------------
-Tested and Working Physical Disk Drives:
--Commodore 1541, firmware version CBM DOS V2.6
--Commodore 1541/II, firmware version CBM DOS V2.6
--Commodore 1571, in 64 mode [tnx Cyberjobe]
-
-Tested but NOT Working Physical Disk Drives:
-- none yet
-
-
--------------------------------------------------------
-Tested and Working Disk Drive emulators and others:
-- Pi1541, kernel version 1.24
+---------------- -------------------------------------------------
+Tested and Working Physical Disk Drives
+------------------------------------------------------------------
+MODEL               	FW              NOTES
+Commodore 1541      	CBM DOS V2.6		
+Commodore 1541/II	CBM DOS V2.6
+Commodore 1571		CBM DOS 3.0 	in 64 mode [tnx Cyberjobe]
+Commodore 1571		CBM DOS 3.0	in 128 mode (see Note 1)
+Commodore 1581		JiffyDOS 6.0 	[tnx Antonio Bonanno]
+Commodore 1581		CBM DOS V10 	[tnx Antonio Bonanno]
+------------------------------------------------------------------
 
 
-Tested but NOT Working Disk Drive emulators and others:
-- none yet
 
 
+------------------------------------------------------------------
+Tested and Working Disk Drive emulators and others
+------------------------------------------------------------------
+MODEL			FW
+Pi1541			kernel version 1.24
+------------------------------------------------------------------
+
+
+
+Note 1: 
+128 mode uses both sides of the disk. Be sure to:
+- issue the command @CMD U0>M1 to set the Drive in 128 mode
+- use an appropriate DS/DD disk
+
+Updated: 01/12/2023
