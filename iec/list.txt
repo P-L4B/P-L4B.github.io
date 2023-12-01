@@ -1,13 +1,13 @@
 ---------------- -------------------------------------------------
 Tested and Working Physical Disk Drives
 ------------------------------------------------------------------
-MODEL               	FW              NOTES
-Commodore 1541      	CBM DOS V2.6		
+MODEL                   FW              NOTES
+Commodore 1541          CBM DOS V2.6		
 Commodore 1541/II	CBM DOS V2.6
-Commodore 1571		CBM DOS 3.0 	in 64 mode [tnx Cyberjobe]
+Commodore 1571		CBM DOS 3.0     in 64 mode [tnx Cyberjobe]
 Commodore 1571		CBM DOS 3.0	in 128 mode (see Note 1)
-Commodore 1581		JiffyDOS 6.0 	[tnx Antonio Bonanno]
-Commodore 1581		CBM DOS V10 	[tnx Antonio Bonanno]
+Commodore 1581		JiffyDOS 6.0    [tnx Antonio Bonanno]
+Commodore 1581		CBM DOS V10     [tnx Antonio Bonanno]
 ------------------------------------------------------------------
 
 
