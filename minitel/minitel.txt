@@ -50,8 +50,8 @@ If it stays off you need to power the Modem from the USB connector (Option 2). U
 To enter the terminal mode:
 - Switch on the ADF-258
 - Power on the Modem board, if not already powered on by the Minitel itself
-- Set the Teletel operating mode with the keys combination FUNZ+T
-- Set the Terminal speed with the keys combination FUNZ+4
+- Set the Teletel operating mode with the keys combination FUNZ+M then T
+- Set the Terminal speed with the keys combination FUNZ+B then 4
 - Finally, enter the Terminal Mode with the keys combination FUNZ+AGENDA
 
 The modem configuration page should appea appear within a couple of seconds.
