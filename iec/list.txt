@@ -16,8 +16,9 @@ Commodore 1581		CBM DOS V10     [tnx Antonio Bonanno]
 ------------------------------------------------------------------
 Tested and Working Disk Drive emulators and others
 ------------------------------------------------------------------
-MODEL			FW
+MODEL			FW			NOTES
 Pi1541			kernel version 1.24
+SD2IEC			1.0.0-atentdead.0-24	(see note 2)
 ------------------------------------------------------------------
 
 
@@ -27,4 +28,8 @@ Note 1:
 - issue the command @CMD U0>M1 to set the Drive in 128 mode
 - use an appropriate DS/DD disk
 
-Updated: 01/12/2023
+Note 2:
+SD2IEC needs an external power supply since it's usually powered 
+by the cassette interface.
+
+Updated: 012/01/2023
