@@ -8,7 +8,7 @@
 161 rem adapted for applesoft and apple-1 by claudio parmigiani, 2024
 162 rem
 163 rem
-170 c$=".,'~=+:;[/<*?&o0x#":rem 'palette' lightest to darkest...
+170 c$=".,'~=+:;[/<*?&o0x# ":rem 'palette' lightest to darkest...
 180 s1=1: rem set to 0 if your mid$() indexes from 0.
 190 m1=len(c$)
 200 m2=4
