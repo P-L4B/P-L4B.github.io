@@ -2,14 +2,14 @@
 | MINITEL ADF-258 WI-FI MODEM |
 +-----------------------------+
 
-BILL OF MATERIALS
------------------
+BILL OF MATERIALS PCB VERSION 1.1a
+----------------------------------
 
 1x PCB as per the attached Gerber file [THICKNESS: 1 mm]
 1x ESP-WROOM-32 Dev Board
 1x connector DIN 5 poles
 1x Resistor 56 kohm 1/4 W
-1x Resistor 10 kohm 1/4 W
+1x Resistor 4.7 kohm 1/4 W
 1x Resistor 22 kohm 1/4 W
 1x Transistor 2N2222 or equivalent
 1x Diode 1N4385 or equivalent

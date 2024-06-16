@@ -1,0 +1,53 @@
++--------------------------------------------------------------------------------------------------+
+|  MINITEL ADF-258 WI-FI MODEM - COMPATIBILITY NOTES RELATED TO TELIC ALCATEL "MINITEL R 722 680C" |
++--------------------------------------------------------------------------------------------------+
+
+
+ADDITIONAL NOTES
+----------------
+This ADF-258 WI-FI MODEM (PCB Version 1.00) can be made compatible with TELIC ALCATEL "MINITEL R 722 680C" with a simple modification.
+The modification will not prevent the use with the ADF-258, that will remain totally compatible.
+Please note that "PCB Version 1.00a" GERBER file -currently available for download- is already updated with the new value.
+The BOM has also been updated.
+
+
+HOW TO
+------
+Identify the 10 kOhm resistor (Brown-Black-Orange-Gold).
+Its value should be about half of what it is now (~5 kOhm), to do so there are several ways:
+- solder a 10 kOhm resistor in parallel to the existing one, either on the component or solder side.
+- desolder the 10 kOhm resistor and replace it with a 4.7 kOhm.
+
+Example pictures:
+https://p-l4b.github.io/minitel/c0.jpg
+https://p-l4b.github.io/minitel/c1.jpg
+
+
+
+FIRMWARE
+--------
+Download the appropriate firmware!
+Firmware is freely downloadable from the link below, follow the instructions and program your ESP-WROOM-32:
+https://github.com/sblendorio/Minitel-ESP32
+
+
+BOOT
+----
+
+Just like with ADF-258, the modem can be powered in different ways:
+1) Directly from TELIC ALCATEL "MINITEL R 722 680C"
+2) From Dev Board USB connector
+
+Option 1) may not be available on your model. To find out, just gently connect your Wi-Fi modem to TELIC ALCATEL "MINITEL R 722 680C"'s 
+DIN plug and switch on the Minitel.
+If modem LED's lights up you're good to go. 
+If it stays off you need to power the Modem from the USB connector (Option 2). Use any USB adapter that can supply at least 1000 mA.
+
+The terminal mode is immediately available at terminal's boot, there's no need to type in any sequence of keys, so:
+- Switch on the ADF-258
+- Power on the Modem board, if not already powered on by the Minitel itself
+
+The modem configuration page should appear appear within a couple of seconds.
+From here on, follow the easy on-screen instructions and enjoy!
+
+

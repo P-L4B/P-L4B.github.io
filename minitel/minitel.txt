@@ -54,7 +54,7 @@ To enter the terminal mode:
 - Set the Terminal speed with the keys combination FUNZ+B then 4
 - Finally, enter the Terminal Mode with the keys combination FUNZ+AGENDA
 
-The modem configuration page should appea appear within a couple of seconds.
+The modem configuration page should appear within a couple of seconds.
 From here on, follow the easy on-screen instructions and enjoy!
 
 
