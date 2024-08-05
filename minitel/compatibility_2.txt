@@ -1,0 +1,25 @@
++--------------------------------------------------------------------------------------------------+
+|        MINITEL ADF-258 WI-FI MODEM - COMPATIBILITY NOTES RELATED TO VIDEOTEL/SIP "TTM90/TL"      |
++--------------------------------------------------------------------------------------------------+
+
+
+ADDITIONAL NOTES
+----------------
+This ADF-258 WI-FI MODEM (PCB Version 1.00) can be made compatible with VIDEOTEL/SIP "TTM90/TL" with a simple modification.
+
+Before using the modem with VIDEOTEL/SIP "TTM90/TL" please perform the following operation:
+
+1) Carefully disconnect the ESP-32 Dev Board from the PCB, taking note of the orientation.
+2) Identify the jumper "POWER". It can have either a soldered jumper wire or a proper jumper. Usually it connects the central pin and the "LD1117" side.
+3) Cut/open the existing connection: the three pads must remain unconnected.
+4) Check the orientation of the ESP-32 Dev Board and gently put it back in place.
+
+From now on the modem can be powered only by the USB connector.
+----------------------------------------------------------------
+
+Reconnect the modem to the VIDEOTEL/SIP "TTM90/TL" and switch it on.
+Connect the USB cable to an appropriate power supply and continue the start-up sequence as usual.
+
+
+
+
