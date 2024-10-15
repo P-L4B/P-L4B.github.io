@@ -1,0 +1,61 @@
+******************************************************
+*                                                    *
+*  Z80 Demo Board with Woven-Wire Read-Only Memory   *
+*                   Design Notes                     *
+*                                                    *
+******************************************************
+
+
+This is a Demonstration Board to show the operation of the so-called "Woven-Wire Read-Only Memory."
+This technique is related to the well-known "Core Rope" Read-Only memory used by NASA in Apollo missions
+(and not only) in the AGC (Apollo Guidance Computer), but it's simpler.
+
+This project was made from salvaged components, so several design choices were driven by what was available.
+Also, many liberties were taken... for example there isn't any comparator to adjust for the 1/0 threshold.
+I thought that this function could be performed "by design" by the 1/0 thresholds "built-in" the CMOS logic.
+
+From a building point of view, the design includes:
+- the "Woven-Wire" memory itself, described below,
+- a Z80 CMOS microprocessor,
+- some gates and misc functions,
+- a dual 7-segment display,
+- two clock generators, one ~50 kHz for the memory and a variable one, from about 
+  1 to 10 Hz for the microprocessor.
+- clock can also manually provided via an astable 555.
+
+Functionally, the microprocessor reads and executes the previously woven code with wires passing 
+in and out of the individual cores.
+The sequences of 1's and 0's are nothing more than the translation of the program source code into binary.
+Individual lines are activated via a 2N2222 transistor, which is driven by the 4-to-16 decoder connected 
+to the first 4 bits of the Address Bus.
+Wnen /RD signal is activated from the microprocessor, the corresponding Address Bus address is decoded and
+the corresponding 2N2222 is engaged.
+
+The output on the display is driven by the /IORQ line, which triggers both the latching of the data 
+present on the Data Bus during the execution of the OUT function and the "blinking," which exists for aesthetic function only. 
+
+The ~50 kHz oscillator, which feeds all the lines in parallel (but of which only one works at a time), has a 4.7nF capacitor 
+in series whose capacitive reactance should be a few hundred ohms, enough not to overload the 2N2222 at the other end of the line.
+
+Rectification of the voltage generated on the secondary winding is done with a Schottky diode and a small capacitor.
+It is essential, when testing, to check with an oscilloscope that the voltage is not too high; if necessary, add a small load.
+
+However, the 4508 IC is protected internally with clamping diodes and -because it is a CMOS- it has robust, well-defined 
+voltage thresholds to detect 0s and 1s. This helps in not detecting "false 1's" resulting from parasitic coupling/crosstalk, etc.
+
+After  the 4508 there's a 74HC245, which, in addition to further hardening the signals (enough to drive the LEDs as well) also 
+helps in handling the 3-state, which is necessary to avoid bus-contention during the write phase on the Display.
+
+As written, the design was made with scavenged material, some choices are also a consequence of the layout chosen for the 
+components (e.g., the A/B direction of the 74HC245 requiring an inverter).
+The use of the 4515 (4 to 16 decoder), with ACTIVE LOW output, needed needed three 4069s to reverse the logic and drive the 2N2222s.
+Using a 4514 -with ACTIVE HIGH outputs- would have simplified the wiring avoiding the use of 16 intverters, but alas, I had none available.
+
+Also, reversing the inputs/outputs of 74HC245 would have also spared another inverter, but it would have greatly complicated 
+the wiring on the PCB... but since 4069s were already there I didn't think too much about it... ;-)
+Let's say that at least 3x4069 could be avoided with little effort.
+
+
+P-LAB - 10/2024
+
+
