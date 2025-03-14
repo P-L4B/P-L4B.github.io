@@ -41,7 +41,7 @@ int keyPos = 0;
 int digitalread = 0;
 int keyDown[72];
 long lastDebounceTime[72];
-int debounceDelay = 50;
+int debounceDelay = 100;
 int shift = 0;
 int outPin = 2;
 int outPinSet = 0;
@@ -247,7 +247,7 @@ void outChar() {
     keyDown[keyPos] = 94;
   }
 
-  if (keyDown[keyPos] >= 0 && keyDown[keyPos] <= 127) {
+  if (keyDown[keyPos] > 0 && keyDown[keyPos] <= 127) {
     //if (keyDown[keyPos] != 0 ) {
 
 
