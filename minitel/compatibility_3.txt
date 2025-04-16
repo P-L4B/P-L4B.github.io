@@ -1,0 +1,31 @@
++--------------------------------------------------------------------------------------------------+
+|                         COMPATIBILITY NOTES RELATED TO PHILIPS "HCS80"                           |
++--------------------------------------------------------------------------------------------------+
+
+
+ADDITIONAL NOTES
+----------------
+
+If the DIN 5-poles Socket is present on VIDEOTEX TERMINAL PHILIPS "HCS80", this ADF-258 WI-FI MODEM 
+(PCB Version 1.00) can be used.
+
+Recap of the operations/commands to issue to the Terminal:
+
+
+1) Set the correct protocol (Teletel 40 columns -it might be displayed as CEPT2. Do not use CEPT3) 
+   with the command:
+
+   FUNZ+V T
+
+   (press and hold down the "FUNZ" key, the press the "V" key. Release both keys, then press the "T" key)
+
+
+
+2) Set the correct Baud Rate (4800) with the command:
+
+   FUNZ+P 4
+
+   (press and hold down the "FUNZ" key, the press the "P" key. Release both keys, then press the "4" key)
+
+
+
