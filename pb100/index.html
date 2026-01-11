@@ -1,0 +1,97 @@
+<html><title>CASIO PB-100</title><body><code>
+<h2>MOON PATROL like game on unexpanded Computer CASIO PB-100</h2>
+<img src="1.jpg" height="200">
+<img src="2.jpg" height="200">
+<img src="3.jpg" height="200">
+<br><br>
+<h4>Documents hosted here:</h4>
+<a href="moonpatrol.txt">moonpatrol.txt [this page]</a><br>
+<a href="mp.mp4">Video Example of gameplay [mp4]</a><br>
+<br><br>
+<br><b>
+************************************************************<br>
+MOON PATROL "like" game for unexpanded Computer CASIO PB-100<br>
+by P-LAB 2026<br>
+************************************************************<br>
+<br>
+GAMEPLAY:<br></b>
+As in the original game by Williams Electronics, our lunar jeep bounces across the surface of the moon.<br>
+The aim of the game is to complete all 10 levels of increasing difficulty with only three lives available.<br>
+To do this, you need to jump over the smaller rocks (J key), but only when they are close. <br>
+The larger boulders cannot be jumped over but must be destroyed by pressing the F (Fire) key.<br>
+It is possible to destroy large boulders even when they are distant and there are small boulders in between.<br>
+<br>
+<br>
+<b>NOTES TO THE PROGRAM LISTING<br></b>
+Please type in the correct graphic characters between double brackets in the following lines:<br>
+lines 14, 24 --> the "o" is the lowercase, in extended mode, press MODE . o keys. This char is the "boulder" obstacle.<br>
+line 16 --> the "O-o" is the first frame of the vechicle animation. Press: MODE . SHIFT A then X then O<br>
+line 17 --> the "o-O" is the second frame of the vechicle animation. Press: MODE . O then X then SHIFT A<br>
+line 18 --> the "o-o" is the frame of the vehicle jump. Press MODE . then SHIFT A, then SHIFT F, then SHIFT A<br>
+<br>
+Please type in the correct operators for the "not equal to" and "greater or equal to" in the following lines:<br>
+line 7, 9, 13 --> the two characters "<>" listed below must be substituted with the single character "not equal to" by pressing SHIFT =<br>
+line 10 --> the two characters ">=" listed below must be substituted with the single character "greater or equal to" by pressing SHIFT +<br>
+<br>
+<br>
+<br>
+<b>P0 LISTING (At the end typing there should be 8 "steps" (bytes) of RAM left)<br>
+<br>
+PREPARATION AND VARIABLES SETTING<br></b>
+Before running the game, issue the three commands below, either in RUN or WRT mode.<br>
+DEFM 1<br>
+G$="STAGE="<br>
+H$="LIVES="<br>
+<br>
+2 FOR I=1 TO 8: R$(I)="_":NEXT I:L=1:B=0:E=0:D=0:F=3<br>
+3 PRINT G$;L;" GO!"<br>
+5 GOSUB 16<br>
+6 FOR I=0 TO 8: R$(I)=R(I+1):PRINT CSR(I+3);R$(I);:NEXT I<br>
+7 D=D+1:C$=KEY:IF C$="J";IF R$(0)<>"o";GOTO 18<br>
+8 IF C$="F";GOSUB 23<br>
+9 IF R$(0)<>"_" THEN 19<br>
+10 IF D>=100;GOSUB 27<br>
+11 GOSUB 17<br>
+12 R$(9)="_":B=B+1<br>
+13 IF B<>3 THEN 5<br>
+14 B=0:A=INT(RAN#*(99-L*7)):IF A<40;R$(9)=".":IF A<10;R$(9)="o"<br>
+15 GOTO 5<br>
+16 PRINT CSR0;"O-o";:RETURN<br>
+17 PRINT CSR0;"o-O";:RETURN<br>
+18 PRINT CSR0;"o-o";:R$(0)="_":GOTO 6<br>
+19 PRINT "CRASH!":F=F-1<br>
+20 GOSUB 31<br>
+21 IF F=0;PRINT "GAME OVER":END<br>
+22 GOTO 2<br>
+23 FOR J=0 TO 8<br>
+24 IF R$(J)="o";PRINT CSRJ+3;"*";:R$(J)="_":RETURN<br>
+26 NEXT J:RETURN<br>
+27 PRINT G$;L;" OK!":L=L+1<br>
+28 D=0:<br>
+29 IF L=11;PRINT "FINISH!":L=L-1:GOSUB 31:END<br>
+30 GOTO 2<br>
+31 E=E+D:PRINT H$;F;" ";G$;L;" P=";E:RETURN<br>
+<br>
+<br>
+<br>
+<b>VARIABLES LIST:<br></b>
+C$ = Key pressed by the player<br>
+D  = Partial Score<br>
+E  = Total Score<br>
+F  = Lives counter<br>
+G$ = Fixed String with the value "STAGE=" to save program RAM<br>
+H$ = Fixed String with the value "LIVES=" to save program RAM<br>
+I  = Index for terrain shifting cycle<br>
+J  = Index for boulder interception cycle<br>
+L  = Game level<br>
+R$() = Terrain Array<br>
+<br>
+<br>
+<br><br>
+<p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
+<br>
+<hr><center>
+<img src="p.png">
+<h6>P-Lab 2021-26</h6></center>
+</html></body>
+
