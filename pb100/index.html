@@ -191,27 +191,36 @@ Wolfram's cellular automata are systems where cells in a <b>1D grid</b> evolve a
 <b>The 256 Rules:<br></b>
 Wolfram identified 256 distinct rules (numbered 0 to 255) for one-dimensional cellular automata. Famous examples:<br>
 <br>
-    Rule 30:  (00011110 in binary): Complex chaotic patterns.<br>
-    Rule 110: (01101110 in binary): Touring complete.<br>
-    Rule 90:  (01011010 in binary): Sierpinski triangle.<br>
+    Rule 30: Complex chaotic patterns.<br>
+    Rule 110: Touring complete.<br>
+    Rule 90: Sierpinski triangle.<br>
 <br>
 <h3><b>The program</b></h3>
-The program needs the RAM expansion OR-1 because its length exceeds the standard 544 bytes, .
+The program needs the RAM expansion OR-1 because its length exceeds the standard 544 bytes.<br>
 Due to the one-line display, the program calculates Wolfram's one-dimensional cellular automata.<br><br>
 Main features:<br>
-- Rule number must be specified in binary notation (always enter all 8 bits).<br>
+- Type in the Wolfram's Rule number that you want to use.<br>
 - The "World" length can be a maximum of 30 cells.<br>
 - The initial state can be either random or manually entered (in binary notation).<br>
 - All cells are always shown: if the "World" is bigger than 12 cells, cells will scroll left.<br>
 - Iteration occurs automatically, if needed it can be paused with the STOP key and resumed with ENTER key.<br>
+<br>
+Usage:<br>
+- Run the program<br>
+- The program asks for the Rule to apply: "RULE#?" Enter a number between 0 and 255.<br>
+- The program asks for the World Length: "LEN?" Enter a number less then 30.<br>
+- The program now asks to enter the initial state of your world "SET/'R'?" Type in R if you want a random state, or enter invidual cell states for every cell in your world.<br>
+<br>
 <br>
 <h3><b>Warning: questionable programming practices ahead</h3></b>
 Although Wolfram's cellular automata computation works well with numerical arrays, I used text arrays.<br>
 This choice was made because, in the BASIC of the PB-100, the printing of values of a numerical array always reserve a space for the sign.<br>
 On a 12 character long display this would have meant only 6 cells on the screen at the same time, and an annoying long scroll.<br>
 Swapping between numbers and characters representing numbers -for printing purposes- it's a common programming technique on this machine.<br>
-Also, please note that there isn't any sanity check on the input.<br>
-So, if you skip some bit in the Rule number or in the definition of the initial state, sooner or later an error message will pop up.<br>
+PB-100's BASIC is also very limited. For example: the VAL function argument can't be an element of an array, the MID function works only on the special "$" variable,<br>
+the maximum length for any other string variable is just 7 characters, and many other quirks.<br>
+Last but not least, please note that there isn't any sanity check on the input.<br>
+So, if you skip some bit in the definition of the initial state, sooner or later an error message will pop up.<br>
 <br>
 <br>
 <b>NOTES TO THE PROGRAM LISTING<br></b>
@@ -222,54 +231,40 @@ Line 2020 --> the ">=" --> Greater or equal: press SHIFT and +<br>
 <br>
 <b>P0 LISTING</b><br>
 <br>
+Issue the following command before entering the program:<br>
 DEFM 19<br>
 <br>
 1 VAC<br>
-10 INPUT "RULE# ",N<br>
-20 GOSUB 2000<br>
-30 INPUT "WORLD LENGTH",A(39)<br>
-40 INPUT "SET CELLS OR 'R'",$<br>
-60 IF $="R";GOSUB 1000<br>
-70 PRINT CSR 0;$;<br>
-80 A(44)=A(44)+1<br>
+10 INPUT "RULE# ",N:GOSUB 2000:INPUT "LEN",A(39): INPUT "SET/'R'",$<br>
+20 IF $="R";GOSUB 1000<br>
+30 PRINT CSR 0;$;:A(44)=A(44)+1<br>
 100 FOR A=1 TO A(39)<br>
 110 IF A=1;A$(41)=MID(A(39),1):GOTO 130<br>
 120 A$(41)=MID(A-1,1)<br>
 130 A$(42)=MID(A,1)<br>
-140 IF A=A(39);A$(43)=MID(1,1):GOTO 200<br>
+140 IF A=A(39);A$(43)=MID(1,1):GOTO 160<br>
 150 A$(43)=MID(A+1,1)<br>
-200 IF A$(41)="0";IF A$(42)="0";IF A$(43)="0";A$(A)=A$(38)<br>
-210 IF A$(41)="0";IF A$(42)="0";IF A$(43)="1";A$(A)=A$(37)<br>
-220 IF A$(41)="0";IF A$(42)="1";IF A$(43)="0";A$(A)=A$(36)<br>
-230 IF A$(41)="0";IF A$(42)="1";IF A$(43)="1";A$(A)=A$(35)<br>
-240 IF A$(41)="1";IF A$(42)="0";IF A$(43)="0";A$(A)=A$(34)<br>
-250 IF A$(41)="1";IF A$(42)="0";IF A$(43)="1";A$(A)=A$(33)<br>
-260 IF A$(41)="1";IF A$(42)="1";IF A$(43)="0";A$(A)=A$(32)<br>
-270 IF A$(41)="1";IF A$(42)="1";IF A$(43)="1";A$(A)=A$(31)<br>
+160 A(40)=38:IF A$(43)="1"; A(40)=A(40)-1<br>
+170 IF A(42)="1"; A(40)=A(40)-2<br>
+180 IF A(41)="1"; A(40)=A(40)-4<br>
+190 A$(A)=A$(A(40))<br>
 300 NEXT A<br>
-310 $=""<br>
-320 FOR A=1 TO A(39)<br>
-330 $=$+A$(A)<br>
-340 NEXT A<br>
-999 GOTO 70<br>
-1000 FOR A=1 TO A(39)<br>
-1010 A(40)=INT(RAN#*2)<br>
-1020 IF A(40)=0;$=$+"0"<br>
-1030 IF A(40)=1;$=$+"1"<br>
+320 $="":FOR A=1 TO A(39):$=$+A$(A):NEXT A:GOTO 30<br>
+1000 $="":FOR A=1 TO A(39):A(40)=INT(RAN#*2)<br>
+1020 IF A(40)=0;$=$+"0":GOTO 1040<br>
+1030 $=$+"1"<br>
 1040 NEXT A: RETURN<br>
-2000 FOR I=7 TO 0 STEP -1<br>
-2010 P=2^I<br>
+2000 FOR I=7 TO 0 STEP -1:P=2^I<br>
 2020 IF N>=P;A$(38-I)="1":N=N-P:GOTO 2040<br>
-2030 IF N&#60P;A$(38-I)="0"<br>
-2040 NEXT I: RETURN<br>
-<br>
+2030 A$(38-I)="0"<br>
+2040 NEXT I: RETURN<br><br>
 <br>
 <br><br>
 VARIABLES LIST:<br>
 $ = String containing the "world"<br>
 A = Generic index<br>
 A$(1..30) = World array after computation<br>
-A(31..38) = Binary representation of the #rule (bit 38=LSB, bit 31=MSB)<br>
+A$(31..38) = Binary representation of the #rule (bit 38=LSB, bit 31=MSB)<br>
 A(39) = "World" length<br>
 A(40) = General variable<br>
 A$(41) = Cell on the left<br>
@@ -289,3 +284,5 @@ I,N,P = Variables used only once, for the conversion on the rule# into binary<br
 <h6>P-Lab 2021-26</h6></center>
 </html></body>
 
+
+200 I=38:IF A$(43)="1";I=I-1:IF A$(42)="1";I=I-2:IF A$(41)="1";I=I-4:A$(A)=A$(I)
