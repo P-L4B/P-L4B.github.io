@@ -217,8 +217,8 @@ Although Wolfram's cellular automata computation works well with numerical array
 This choice was made because, in the BASIC of the PB-100, the printing of values of a numerical array always reserve a space for the sign.<br>
 On a 12 character long display this would have meant only 6 cells on the screen at the same time, and an annoying long scroll.<br>
 Swapping between numbers and characters representing numbers -for printing purposes- it's a common programming technique on this machine.<br>
-PB-100's BASIC is also very limited. For example: the VAL function argument can't be an element of an array, the MID function works only on the special "$" variable,<br>
-the maximum length for any other string variable is just 7 characters, and many other quirks.<br>
+PB-100's BASIC is also very limited. For example: the VAL function argument can't be an element of an array, and the MID function works only on the special "$" variable,<br>
+The maximum length for any other string variable is just 7 characters, and many other quirks.<br>
 Last but not least, please note that there isn't any sanity check on the input.<br>
 So, if you skip some bit in the definition of the initial state, sooner or later an error message will pop up.<br>
 <br>
@@ -283,6 +283,3 @@ I,N,P = Variables used only once, for the conversion on the rule# into binary<br
 <img src="p.png">
 <h6>P-Lab 2021-26</h6></center>
 </html></body>
-
-
-200 I=38:IF A$(43)="1";I=I-1:IF A$(42)="1";I=I-2:IF A$(41)="1";I=I-4:A$(A)=A$(I)
